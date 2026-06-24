@@ -3,7 +3,11 @@ import pandas as pd
 from psycopg2.extras import RealDictCursor
 from datetime import datetime
 import openpyxl 
-OUTPUT_DIR = "."
+import tempfile 
+import logging 
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+OUTPUT_DIR = "./project_exports"
 
 DB_CONFIG = {
     "host": "localhost",
@@ -16,26 +20,32 @@ TABLES = ["wait_times", "ingestion_logs"]
 
 
 def export_to_excel():
-    conn = psycopg2.connect(**DB_CONFIG)
+    try: 
+        conn = psycopg2.connect(**DB_CONFIG, cursor_factory=RealDictCursor, connect_timeout=10)  # Set a timeout for the connection
+    except Exception as e: 
+        print(f"Error connecting to the database: {e}") 
+        logging.error(f"Error connecting to the database: {e}")
+        return 
+    
+            
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_path = f"{OUTPUT_DIR}/border_wait_times_{timestamp}.xlsx"
-
-    with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
-        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            for table in TABLES:
-                cursor.execute(f"SELECT * FROM {table} ORDER BY id DESC")
-                rows = cursor.fetchall()
-                df = pd.DataFrame(rows)
-
-                for col in df.select_dtypes(include=["datetimetz"]).columns:
-                    df[col] = df[col].dt.tz_localize(None)
-
-                df.to_excel(writer, sheet_name=table, index=False)
-                print(f"  {table}: {len(df)} rows exported")
-
-    conn.close()
-    print(f"\nExported to: {output_path}")
+    output_path = f"{OUTPUT_DIR}/border_wait_times_.xlsx"
+    tempfile_path=output_path + f".tmp"
 
 
-if __name__ == "__main__":
-    export_to_excel()
+try: 
+    with pd.ExcelWriter(tempfile_path, engine="openpyxl") as writer: # using pandas Excel writer to write on the tempoary file 
+        for table in TABLES: # Querying from the postrgres database and writing to the excel file 
+            query = f"SELECT * FROM {table}"
+            df = pd.read_sql_query(query, conn)
+            df.to_excel(writer, sheet_name=table, index=False)
+    # Once all sheets are written, rename the temporary file to the final output path
+    os.rename(tempfile_path, output_path)
+except Exception as e:
+    if os.path.exists (tempfile_path):
+        os.remove(tempfile_path)  # Clean up the temporary file in case of an error
+        logging.error(f"Error during export to Excel: {e}. Temporary file removed.")
+    raise 
+
+
