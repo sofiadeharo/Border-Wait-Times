@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+ENV/
+env/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Logs & Data
+logs/
+postgres_data/
+
+# Node
+node_modules/
+npm-debug.log
+
+# OS
+.DS_Store
