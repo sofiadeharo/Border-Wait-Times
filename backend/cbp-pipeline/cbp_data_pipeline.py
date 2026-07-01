@@ -56,7 +56,7 @@ LANE_TYPES = {
 }
 
 DB_CONFIG = {
-    "host": os.getenv("DB_HOST", "localhost"),
+    "host": os.getenv("DB_HOST", "localhost"), 
     "database": os.getenv("DB_NAME", "border_wait_times"),
     "user": os.getenv("DB_USER", "postgres"),
     "password": os.getenv("DB_PASSWORD", "password"),

@@ -1,12 +1,11 @@
+import os
+import logging
 import psycopg2
 import pandas as pd
 from psycopg2.extras import RealDictCursor
-from datetime import datetime
-import openpyxl 
-import tempfile 
-import logging 
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
+
 OUTPUT_DIR = "./project_exports"
 
 DB_CONFIG = {
@@ -19,33 +18,40 @@ DB_CONFIG = {
 TABLES = ["wait_times", "ingestion_logs"]
 
 
-def export_to_excel():
-    try: 
-        conn = psycopg2.connect(**DB_CONFIG, cursor_factory=RealDictCursor, connect_timeout=10)  # Set a timeout for the connection
-    except Exception as e: 
-        print(f"Error connecting to the database: {e}") 
-        logging.error(f"Error connecting to the database: {e}")
-        return 
-    
-            
+def export_to_excel() -> str:
+    """Export database tables to Excel using a temp file to prevent corruption.
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_path = f"{OUTPUT_DIR}/border_wait_times_.xlsx"
-    tempfile_path=output_path + f".tmp"
+    Writes to a .tmp file first, then atomically replaces the target only when
+    the full write succeeds. Returns the final output path.
+    """
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+    try:
+        conn = psycopg2.connect(**DB_CONFIG, cursor_factory=RealDictCursor, connect_timeout=10)
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
 
-try: 
-    with pd.ExcelWriter(tempfile_path, engine="openpyxl") as writer: # using pandas Excel writer to write on the tempoary file 
-        for table in TABLES: # Querying from the postrgres database and writing to the excel file 
-            query = f"SELECT * FROM {table}"
-            df = pd.read_sql_query(query, conn)
-            df.to_excel(writer, sheet_name=table, index=False)
-    # Once all sheets are written, rename the temporary file to the final output path
-    os.rename(tempfile_path, output_path)
-except Exception as e:
-    if os.path.exists (tempfile_path):
-        os.remove(tempfile_path)  # Clean up the temporary file in case of an error
-        logging.error(f"Error during export to Excel: {e}. Temporary file removed.")
-    raise 
+    output_path = os.path.join(OUTPUT_DIR, "border_wait_times.xlsx")
+    temp_path = output_path + ".tmp"
 
+    try:
+        with pd.ExcelWriter(temp_path, engine="openpyxl") as writer:
+            for table in TABLES:
+                df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
+                df.to_excel(writer, sheet_name=table, index=False)
+                logger.info(f"Written sheet '{table}' ({len(df)} rows)")
 
+        os.replace(temp_path, output_path)
+        logger.info(f"Export complete: {output_path}")
+        return output_path
+
+    except Exception as e:
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
+            logger.warning(f"Removed temp file after error: {temp_path}")
+        logger.error(f"Export failed: {e}")
+        raise
+
+    finally:
+        conn.close()
