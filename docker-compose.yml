@@ -1,4 +1,3 @@
-
 services:
   postgres:
     image: postgres:15-alpine
@@ -8,7 +7,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
       POSTGRES_DB: ${DB_NAME:-border_wait_times}
     ports:
-      - "5432:5432"
+      - "${DB_HOST_PORT:-5433}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/init.sql
@@ -36,6 +35,104 @@ services:
         condition: service_healthy
     volumes:
       - ./logs:/app/logs
+    networks:
+      - cbp_network
+
+  weather_pipeline:
+    build:
+      context: .
+      dockerfile: backend/weather_pipeline/Dockerfile
+    container_name: weather_pipeline
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-border_wait_times}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
+      DB_PORT: 5432
+      WEATHER_API_KEY: ${WEATHER_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - cbp_network
+
+  holiday_pipeline:
+    build:
+      context: .
+      dockerfile: backend/holiday_pipeline/Dockerfile
+    container_name: holiday_pipeline
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-border_wait_times}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
+      DB_PORT: 5432
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - cbp_network
+    restart: "no"
+
+  ml_training:
+    build:
+      context: .
+      dockerfile: backend/ml/Dockerfile
+    container_name: ml_training
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-border_wait_times}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
+      DB_PORT: 5432
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - cbp_network
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/api/Dockerfile
+    container_name: cbp_api
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-border_wait_times}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
+      DB_PORT: 5432
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - cbp_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cbp_frontend
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
     networks:
       - cbp_network
 

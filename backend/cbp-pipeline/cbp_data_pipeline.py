@@ -35,6 +35,12 @@ logger = logging.getLogger(__name__)
 
 CBP_API_URL = "https://bwt.cbp.gov/api/waittimes"
 
+# Postgres NOTIFY channel signaling the weather pipeline (backend/weather_pipeline)
+# to run right after this pipeline completes, keeping both datasets time-aligned
+# instead of drifting on independent schedules. Weather pipeline's scheduler.py
+# LISTENs on this same channel name.
+WEATHER_TRIGGER_CHANNEL = "cbp_pipeline_complete"
+
 PORTS_OF_INTEREST = {
     "240201": "Bridge of the Americas (BOTA)",
     "240202": "Paso Del Norte (PDN)",
@@ -297,6 +303,11 @@ class DatabaseHandler:
             """, (records_processed, records_inserted, status, error_msg, duration))
             self.conn.commit()
     
+    def notify(self, channel: str):
+        with self.conn.cursor() as cursor:
+            cursor.execute(f"NOTIFY {channel};")
+        self.conn.commit()
+
     def close(self):
         if self.conn:
             self.conn.close()
@@ -347,7 +358,10 @@ class CBPDataPipeline:
                 status='success',
                 duration=duration
             )
-            
+
+            self.db.notify(WEATHER_TRIGGER_CHANNEL)
+            logger.info(f"Sent trigger notification on channel '{WEATHER_TRIGGER_CHANNEL}'")
+
             logger.info("=" * 70)
             logger.info("Pipeline Execution Completed Successfully")
             logger.info(f"Duration: {duration:.2f}s")
