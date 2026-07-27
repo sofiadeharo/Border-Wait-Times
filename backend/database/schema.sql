@@ -109,3 +109,17 @@ CREATE TABLE IF NOT EXISTS day_type_model_runs (
 
 CREATE INDEX IF NOT EXISTS idx_day_type_model_runs_run_at
     ON day_type_model_runs(run_at DESC);
+
+CREATE TABLE IF NOT EXISTS blog_comments (
+    id SERIAL PRIMARY KEY,
+    blog_post_slug VARCHAR(255) NOT NULL,
+    author_name VARCHAR(120) NOT NULL,
+    comment_text TEXT NOT NULL,
+    is_approved BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    CHECK (char_length(trim(comment_text)) > 0)
+);
+
+CREATE INDEX IF NOT EXISTS idx_blog_comments_post_created_at
+    ON blog_comments(blog_post_slug, created_at DESC);
