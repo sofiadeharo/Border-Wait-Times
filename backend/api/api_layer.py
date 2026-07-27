@@ -6,6 +6,7 @@ import pandas as pd
 import psycopg2
 import psycopg2.extras
 from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -24,6 +25,12 @@ rf_model_bota = joblib.load(MODEL_PATH)
 
 # Sin fuente de volumen en vivo todavia; placeholder para esta prueba inicial.
 BASELINE_DAILY_VOLUME_BOTA = 12500.0
+
+
+class CommentCreate(BaseModel):
+    blog_post_slug: str
+    author_name: str
+    comment_text: str
 
 
 @app.get("/")
@@ -88,3 +95,48 @@ def get_day_type_effects():
     except psycopg2.Error:
         raise HTTPException(status_code=503, detail="Database unavailable")
 
+
+@app.get("/comments")
+def get_comments(blog_post_slug: str):
+    slug = blog_post_slug.strip()
+    if not slug:
+        raise HTTPException(status_code=400, detail="blog_post_slug is required")
+
+    try:
+        with psycopg2.connect(**DB_CONFIG) as conn:
+            with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
+                cursor.execute("""
+                    SELECT id, blog_post_slug, author_name, comment_text, is_approved, created_at, updated_at
+                    FROM blog_comments
+                    WHERE blog_post_slug = %s
+                      AND is_approved = TRUE
+                    ORDER BY created_at DESC
+                """, (slug,))
+                return cursor.fetchall()
+    except psycopg2.Error:
+        raise HTTPException(status_code=503, detail="Database unavailable")
+
+
+@app.post("/comments", status_code=201)
+def create_comment(payload: CommentCreate):
+    slug = payload.blog_post_slug.strip()
+    author = payload.author_name.strip()
+    comment_text = payload.comment_text.strip()
+
+    if not slug or not author or not comment_text:
+        raise HTTPException(
+            status_code=400,
+            detail="blog_post_slug, author_name, and comment_text are required",
+        )
+
+    try:
+        with psycopg2.connect(**DB_CONFIG) as conn:
+            with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
+                cursor.execute("""
+                    INSERT INTO blog_comments (blog_post_slug, author_name, comment_text)
+                    VALUES (%s, %s, %s)
+                    RETURNING id, blog_post_slug, author_name, comment_text, is_approved, created_at, updated_at
+                """, (slug, author, comment_text))
+                return cursor.fetchone()
+    except psycopg2.Error:
+        raise HTTPException(status_code=503, detail="Database unavailable")
