@@ -41,6 +41,27 @@ const DAY_TYPE_LABELS: Record<string, string> = {
   vacaciones_mx: 'MX Summer Vacation',
 }
 
+const BLOG_ITEMS = [
+  {
+    title: 'How to Read Border Wait Times',
+    body: 'A quick guide to lane types, status labels, and what changes most often throughout the day.',
+    cardClassName: 'md:row-span-2',
+    titleClassName: 'text-xl',
+  },
+  {
+    title: 'Weekly Correlation Snapshot',
+    body: 'See which holiday patterns are currently associated with slower or faster crossings.',
+    cardClassName: '',
+    titleClassName: 'text-lg',
+  },
+  {
+    title: 'Model Prediction Notes',
+    body: 'Understand how the ML estimate is generated and when that value was last refreshed.',
+    cardClassName: '',
+    titleClassName: 'text-base',
+  },
+]
+
 export default function Home() {
   const [data, setData] = useState<WaitTime[]>([])
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
@@ -235,6 +256,30 @@ export default function Home() {
               </p>
             </>
           )}
+        </section>
+
+        <section className="mb-8 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-5">
+          <h2 className="text-lg font-medium text-zinc-800 dark:text-zinc-200">
+            Blog
+          </h2>
+          <p className="text-sm text-zinc-500 mb-4">
+            Border insights and explainers
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:auto-rows-[minmax(140px,_auto)]">
+            {BLOG_ITEMS.map((item) => (
+              <article
+                key={item.title}
+                className={`rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 p-4 ${item.cardClassName}`}
+              >
+                <h3 className={`font-medium text-zinc-900 dark:text-zinc-100 ${item.titleClassName}`}>
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
         </section>
 
         {loading && (
