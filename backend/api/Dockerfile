@@ -11,7 +11,7 @@ RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 COPY backend/api/api_layer.py .
-COPY backend/ml/modelo_bota_waittimes_passengerlanes.joblib /ml/modelo_bota_waittimes_passengerlanes.joblib
+COPY backend/ml/modelo_bota_waittimes_passengerlanes_sintetico_rf2.joblib /ml/modelo_bota_waittimes_passengerlanes_sintetico_rf2.joblib
 
 EXPOSE 8000
 

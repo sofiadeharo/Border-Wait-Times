@@ -109,3 +109,21 @@ CREATE TABLE IF NOT EXISTS day_type_model_runs (
 
 CREATE INDEX IF NOT EXISTS idx_day_type_model_runs_run_at
     ON day_type_model_runs(run_at DESC);
+
+CREATE TABLE IF NOT EXISTS user_reported_wait_times (
+    id SERIAL PRIMARY KEY,
+    port_name VARCHAR(255) NOT NULL DEFAULT 'Bridge of the Americas (BOTA)',
+    crossing_type VARCHAR(100) NOT NULL DEFAULT 'Passenger Vehicle',
+    lane_type VARCHAR(100) NOT NULL,
+    crossing_time TIMESTAMP WITH TIME ZONE NOT NULL,
+    reported_wait_minutes INTEGER NOT NULL CHECK (reported_wait_minutes >= 0 AND reported_wait_minutes <= 600),
+    notes TEXT,
+    submitter_ip VARCHAR(64),
+    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_user_reported_wait_times_crossing_time
+    ON user_reported_wait_times(crossing_time DESC);
+
+CREATE INDEX IF NOT EXISTS idx_user_reported_wait_times_submitter_ip
+    ON user_reported_wait_times(submitter_ip);
