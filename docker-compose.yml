@@ -25,7 +25,7 @@ services:
       dockerfile: Dockerfile
     container_name: cbp_pipeline
     environment:
-      DB_HOST: postgres
+      DB_HOST: ${DB_HOST:-postgres}
       DB_NAME: ${DB_NAME:-border_wait_times}
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
@@ -44,7 +44,7 @@ services:
       dockerfile: backend/weather_pipeline/Dockerfile
     container_name: weather_pipeline
     environment:
-      DB_HOST: postgres
+      DB_HOST: ${DB_HOST:-postgres}
       DB_NAME: ${DB_NAME:-border_wait_times}
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
@@ -64,7 +64,7 @@ services:
       dockerfile: backend/holiday_pipeline/Dockerfile
     container_name: holiday_pipeline
     environment:
-      DB_HOST: postgres
+      DB_HOST: ${DB_HOST:-postgres}
       DB_NAME: ${DB_NAME:-border_wait_times}
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
@@ -84,7 +84,7 @@ services:
       dockerfile: backend/ml/Dockerfile
     container_name: ml_training
     environment:
-      DB_HOST: postgres
+      DB_HOST: ${DB_HOST:-postgres}
       DB_NAME: ${DB_NAME:-border_wait_times}
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
@@ -103,7 +103,7 @@ services:
       dockerfile: backend/api/Dockerfile
     container_name: cbp_api
     environment:
-      DB_HOST: postgres
+      DB_HOST: ${DB_HOST:-postgres}
       DB_NAME: ${DB_NAME:-border_wait_times}
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
