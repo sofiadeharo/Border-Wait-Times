@@ -1,0 +1,63 @@
+export interface WaitTime {
+  port_id: string
+  port_name: string
+  crossing_type: string
+  lane_type: string
+  wait_time_minutes: number
+  status: string
+  timestamp: string
+}
+
+// ACTION: statuses that mean the lane isn't actually operating — CBP reports
+// these with wait_time_minutes = 0, which looks like a fast crossing but
+// really means there's no crossing happening at all. Filter these out before
+// computing "fastest"/"slowest" anywhere in the app.
+const NON_OPERATIONAL_STATUSES = new Set(['Lanes Closed', 'N/A'])
+
+export function isLaneOpen(row: WaitTime): boolean {
+  return !NON_OPERATIONAL_STATUSES.has(row.status)
+}
+
+export type WaitLevel = 'light' | 'expected' | 'heavy'
+
+// ACTION: classifies a raw minute count into a wait-level bucket. Change the
+// 60/30 thresholds here to redefine what counts as "heavy" vs "light" everywhere.
+export function waitLevel(minutes: number): WaitLevel {
+  if (minutes >= 60) return 'heavy'
+  if (minutes <= 30) return 'light'
+  return 'expected'
+}
+
+// COLORS: label + Tailwind classes used to render each wait level (legend dots,
+// card left-border accent, status text). Edit the class strings here to restyle
+// every wait-time card/tag across the app in one place.
+export const WAIT_TAG: Record<WaitLevel, { label: string; text: string; dot: string; border: string }> = {
+  light: {
+    label: 'Light',
+    text: 'text-green-700 dark:text-green-400',
+    dot: 'bg-green-600',
+    border: 'border-l-green-600',
+  },
+  expected: {
+    label: 'Expected',
+    text: 'text-blue-700 dark:text-blue-400',
+    dot: 'bg-blue-600',
+    border: 'border-l-blue-600',
+  },
+  heavy: {
+    label: 'Heavy',
+    text: 'text-red-900 dark:text-red-400',
+    dot: 'bg-red-600',
+    border: 'border-l-red-600',
+  },
+}
+
+// LAYOUT: ports shown in the dashboard's port list and as markers on the map.
+// `name` must match the `port_name` values returned by the API exactly. Add or
+// remove entries here to change which ports appear in both places.
+export const PORTS: { name: string; lat: number; lng: number }[] = [
+  { name: 'Bridge of the Americas (BOTA)', lat: 31.7754, lng: -106.4425 },
+  { name: 'Paso Del Norte (PDN)', lat: 31.7599, lng: -106.4859 },
+  { name: 'Ysleta', lat: 31.6936, lng: -106.3103 },
+  { name: 'Santa Teresa', lat: 31.8508, lng: -106.5895 },
+]
