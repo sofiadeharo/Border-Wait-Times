@@ -1,103 +1,30 @@
-"""
-Weather Data Pipeline Trigger Listener
-En lugar de correr en su propio intervalo, este proceso escucha (LISTEN/NOTIFY
-de Postgres) la senal que envia el pipeline de CBP al terminar cada corrida, y
-dispara el pipeline de clima justo despues. Esto mantiene ambos datasets
-alineados en el tiempo en vez de competir en relojes independientes.
-"""
-
 import logging
-import select
 import sys
 import time
+from apscheduler.schedulers.blocking import BlockingScheduler
 
-import psycopg2
+# Assuming 'weather_pipeline.py' contains a main() function with the pipeline logic.
+from weather_pipeline import main as run_weather_pipeline
 
-from weather_pipeline import WeatherDataPipeline, DB_CONFIG
-
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('logs/weather_scheduler.log'),
-        logging.StreamHandler()
-    ]
-)
+# Configure logging to be visible in Docker logs.
+logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Must match WEATHER_TRIGGER_CHANNEL in backend/cbp-pipeline/cbp_data_pipeline.py
-TRIGGER_CHANNEL = "cbp_pipeline_complete"
-
-# How often to wake up even without a notification, so shutdown signals and a
-# dropped connection get noticed instead of blocking forever.
-POLL_TIMEOUT_SECONDS = 30
-
-
-class WeatherTriggerListener:
-    def __init__(self):
-        self.conn = psycopg2.connect(**DB_CONFIG)
-        self.conn.autocommit = True
-
-    def listen(self):
-        with self.conn.cursor() as cursor:
-            cursor.execute(f"LISTEN {TRIGGER_CHANNEL};")
-        logger.info(f"Listening for '{TRIGGER_CHANNEL}' notifications on Postgres")
-
-    def run_pipeline(self):
-        logger.info("Trigger received - starting weather pipeline run")
-        start_time = time.time()
-        try:
-            pipeline = WeatherDataPipeline()
-            stats = pipeline.run()
-            duration = time.time() - start_time
-            logger.info(
-                f"Weather pipeline completed in {duration:.2f}s. Stats: {stats}"
-            )
-        except Exception as e:
-            logger.error(f"Weather pipeline failed: {str(e)}", exc_info=True)
-
-    def wait_loop(self):
-        while True:
-            ready, _, _ = select.select([self.conn], [], [], POLL_TIMEOUT_SECONDS)
-            if not ready:
-                continue
-
-            self.conn.poll()
-            while self.conn.notifies:
-                notify = self.conn.notifies.pop(0)
-                logger.info(
-                    f"Notification received on '{notify.channel}' from pid {notify.pid}"
-                )
-                self.run_pipeline()
-
-    def close(self):
-        if self.conn:
-            self.conn.close()
-            logger.info("Listener connection closed")
-
-
-def main():
-    logger.info("Starting Weather Pipeline Trigger Listener")
-    logger.info("=" * 70)
-
-    pipeline = WeatherDataPipeline()
-    pipeline.db.create_tables()
-    pipeline.db.close()
-
-    listener = WeatherTriggerListener()
-    listener.listen()
-
+def scheduled_job():
+    """Wrapper function for the pipeline job to add logging and error handling."""
+    logger.info("Starting scheduled weather pipeline run...")
     try:
-        listener.wait_loop()
-    except KeyboardInterrupt:
-        logger.info("Received interrupt signal, shutting down...")
-        listener.close()
-        sys.exit(0)
+        run_weather_pipeline()
+        logger.info("Weather pipeline run completed successfully.")
     except Exception as e:
-        logger.error(f"Unexpected error: {str(e)}", exc_info=True)
-        listener.close()
-        sys.exit(1)
-
+        logger.error(f"An error occurred during the weather pipeline run: {e}", exc_info=True)
 
 if __name__ == "__main__":
-    main()
+    logger.info("Initializing scheduler...")
+    scheduler = BlockingScheduler(timezone="UTC")
+
+    # Schedule the job to run every hour.
+    scheduler.add_job(scheduled_job, 'interval', hours=1, id='weather_pipeline_job')
+    logger.info("Scheduler started. The weather pipeline will run every hour.")
+
+    scheduler.start()
