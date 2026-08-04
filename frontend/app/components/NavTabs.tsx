@@ -11,10 +11,6 @@ const TABS = [
   
 ]
 
-// LAYOUT: fixed-width sticky sidebar (see `w-56`, `h-screen`) that sits to the
-// left of every page (mounted once in layout.tsx). Change `w-56` to resize it.
-// COLORS: the sidebar bar itself is `bg-blackberry-cream/90` regardless of
-// light/dark theme — it's meant to stay a constant brand-navy bar.
 export default function NavTabs() {
   const pathname = usePathname()
 
@@ -33,7 +29,7 @@ export default function NavTabs() {
             // COLORS: `border-wheat text-wheat` = active tab, `text-almond-cream/70` = inactive.
             // `hover:border-tan` controls the hover accent.
             className={
-              'px-3 py-2 rounded-md text-sm font-medium border-l-2 transition-colors ' +
+              'px-3 py-2 rounded-md text-sm font-medium border-l-2 transition-colors text-blackberry-cream dark:text-almond-cream' +
               (isActive
                 ? 'border-wheat text-wheat bg-almond-cream/10'
                 : 'border-transparent text-almond-cream/70 hover:text-almond-cream hover:border-tan')
