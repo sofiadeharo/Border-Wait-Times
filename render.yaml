@@ -1,0 +1,95 @@
+# Render Blueprint — real-time BOTA border wait-time predictions
+# https://render.com/docs/blueprint-spec
+#
+# Provisions:
+#   - border-wait-times-db            Postgres (holidays, wait_times, ...)
+#   - border-wait-times-api           FastAPI service: /predict, /predict/bota-wait-time, /wait-times
+#   - border-wait-times-db-init       cron: applies schema.sql + seeds holiday calendar
+#   - border-wait-times-cbp-pipeline  cron: hourly CBP ingestion into wait_times
+#
+# After the first sync, open border-wait-times-db-init in the dashboard and click
+# "Run" once so the schema and holiday calendar exist before the API serves traffic.
+
+databases:
+  - name: border-wait-times-db
+    plan: free
+    region: oregon
+    databaseName: border_wait_times
+    user: border_wait_times
+
+services:
+  # ---------------------------------------------------------------------------
+  # FastAPI prediction API
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: border-wait-times-api
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r backend/api/requirements.txt
+    startCommand: cd backend/api && uvicorn api_layer:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: DB_HOST
+        fromDatabase: { name: border-wait-times-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: border-wait-times-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: border-wait-times-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: border-wait-times-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: border-wait-times-db, property: password }
+
+  # ---------------------------------------------------------------------------
+  # Schema + holiday-calendar seed (idempotent). Runs daily; "Run" it manually
+  # once right after the first blueprint sync.
+  # ---------------------------------------------------------------------------
+  - type: cron
+    name: border-wait-times-db-init
+    runtime: python
+    plan: starter
+    region: oregon
+    schedule: "30 5 * * *"
+    buildCommand: pip install -r backend/holiday_pipeline/requirements.txt
+    startCommand: mkdir -p logs && python backend/database/init_db.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: DB_HOST
+        fromDatabase: { name: border-wait-times-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: border-wait-times-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: border-wait-times-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: border-wait-times-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: border-wait-times-db, property: password }
+
+  # ---------------------------------------------------------------------------
+  # Hourly CBP ingestion -> wait_times (creates its own tables if missing)
+  # ---------------------------------------------------------------------------
+  - type: cron
+    name: border-wait-times-cbp-pipeline
+    runtime: python
+    plan: starter
+    region: oregon
+    schedule: "0 * * * *"
+    buildCommand: pip install -r backend/cbp-pipeline/requirements.txt
+    startCommand: mkdir -p logs && python backend/cbp-pipeline/cbp_data_pipeline.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: DB_HOST
+        fromDatabase: { name: border-wait-times-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: border-wait-times-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: border-wait-times-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: border-wait-times-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: border-wait-times-db, property: password }

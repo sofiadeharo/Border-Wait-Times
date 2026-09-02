@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 
 app = FastAPI()
 
+
 DB_CONFIG = {
     "host": os.getenv("DB_HOST", "localhost"),
     "dbname": os.getenv("DB_NAME", "border_wait_times"),
@@ -222,5 +223,3 @@ def get_day_type_effects():
         raise HTTPException(status_code=503, detail="Database unavailable")
 
         
-port = int(os.environ.get("PORT", 10000))
-app.run(host="0.0.0.0", port=port)

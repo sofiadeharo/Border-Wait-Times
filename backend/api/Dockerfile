@@ -15,4 +15,4 @@ COPY backend/ml/modelo_bota_waittimes_passengerlanes_sintetico_rf2.joblib /ml/mo
 
 EXPOSE 8000
 
-CMD ["uvicorn", "api_layer:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn api_layer:app --host 0.0.0.0 --port ${PORT:-8000}"]
