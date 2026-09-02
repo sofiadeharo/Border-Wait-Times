@@ -1,0 +1,75 @@
+// =============================================================================
+// Borderplex — border-delay cost measures
+// Two families:
+//   [* (stored)]  read the pre-computed scenario columns from the gold fact
+//   [* (live)]    recompute from parameters for the interactive simulator
+// =============================================================================
+
+// ---- stored (fast; use on every page except the simulator) -------------------
+
+Trucks = SUM ( fact_border_delay_cost[trucks] )
+
+Delay Truck-Hours = SUM ( fact_border_delay_cost[delay_truck_hours] )
+
+Direct Cost = SUM ( fact_border_delay_cost[direct_cost] )
+Inventory Cost = SUM ( fact_border_delay_cost[inventory_cost] )
+Reliability Cost = SUM ( fact_border_delay_cost[reliability_cost] )
+Total Delay Cost = SUM ( fact_border_delay_cost[total_cost] )
+
+Cargo Value at Risk = SUM ( fact_border_delay_cost[cargo_value_at_risk] )
+
+Avg Excess Delay (min) = AVERAGE ( fact_border_delay_cost[excess_delay_min] )
+
+// annualise whatever period is in context
+Days in Context = DISTINCTCOUNT ( fact_border_delay_cost[date] )
+
+Annualised Delay Cost =
+DIVIDE ( [Total Delay Cost], [Days in Context] ) * 365
+
+Annualised Cost ($M) = DIVIDE ( [Annualised Delay Cost], 1e6 )
+
+Cost per Day = DIVIDE ( [Total Delay Cost], [Days in Context] )
+
+// share-of-total for the decomposition visual
+Direct Cost % = DIVIDE ( [Direct Cost], [Total Delay Cost] )
+Inventory Cost % = DIVIDE ( [Inventory Cost], [Total Delay Cost] )
+Reliability Cost % = DIVIDE ( [Reliability Cost], [Total Delay Cost] )
+
+// vs. the baseline scenario (put dim_scenario on the axis; this compares to 'baseline')
+Cost vs Baseline =
+VAR _base =
+    CALCULATE ( [Annualised Delay Cost],
+        REMOVEFILTERS ( dim_scenario ),
+        dim_scenario[scenario_id] = "baseline" )
+RETURN [Annualised Delay Cost] - _base
+
+// ---- live (simulator page only) --------------------------------------------
+// Recompute the model from the what-if parameters, on top of the selected scenario.
+
+_p_added_wait      = SELECTEDVALUE ( p_added_wait[p_added_wait], 0 )
+_p_truck_hr_cost   = SELECTEDVALUE ( p_truck_hourly_cost[p_truck_hourly_cost], 95 )
+_p_carrying_rate   = SELECTEDVALUE ( p_carrying_rate[p_carrying_rate], 0.20 )
+_p_stoppage_cost   = SELECTEDVALUE ( p_stoppage_cost[p_stoppage_cost], 2500 )
+_p_volume_growth   = SELECTEDVALUE ( p_volume_growth[p_volume_growth], 1.0 )
+_threshold_min     =
+    LOOKUPVALUE ( dim_cost_params[value], dim_cost_params[param], "reliability_threshold_min" )
+
+Sim Total Cost =
+SUMX (
+    fact_border_delay_cost,
+    VAR _trucks   = fact_border_delay_cost[trucks] * [_p_volume_growth]
+    VAR _wait     = fact_border_delay_cost[wait_min] + [_p_added_wait]
+    VAR _excess   = MAX ( 0, _wait - RELATED ( dim_port[free_flow_min] ) )
+    VAR _dth      = _trucks * _excess / 60
+    VAR _direct   = _dth * [_p_truck_hr_cost]
+    VAR _invcost  = _dth * RELATED ( dim_port[cargo_value_per_truck_usd] )
+                        * [_p_carrying_rate] / 8760
+    VAR _prob     = MIN ( 1, MAX ( 0, ( _wait - [_threshold_min] ) / 120 ) )
+    VAR _relcost  = _trucks * RELATED ( dim_port[jit_share] ) * _prob * [_p_stoppage_cost]
+    RETURN _direct + _invcost + _relcost
+)
+
+Sim Annualised ($M) =
+DIVIDE ( DIVIDE ( [Sim Total Cost], [Days in Context] ) * 365, 1e6 )
+
+Sim vs Stored Delta ($M) = [Sim Annualised ($M)] - [Annualised Cost ($M)]
