@@ -22,19 +22,30 @@ YEARS = int(os.getenv("EXPORT_YEARS", "3"))
 OUT = pathlib.Path(__file__).parent / "data"
 OUT.mkdir(exist_ok=True)
 
-DSN = dict(
-    host=os.getenv("DB_HOST", "localhost"),
-    dbname=os.getenv("DB_NAME", "border_wait_times"),
-    user=os.getenv("DB_USER", "postgres"),
-    password=os.getenv("DB_PASSWORD", ""),
-    port=int(os.getenv("DB_PORT", "5432")),
-)
+# accepts DATABASE_URL (postgres://user:pass@host:port/db) or the DB_* vars
+if os.getenv("DATABASE_URL"):
+    DSN = os.environ["DATABASE_URL"]
+    _shown = DSN.split("@")[-1]
+else:
+    DSN = dict(
+        host=os.getenv("DB_HOST", "localhost"),
+        dbname=os.getenv("DB_NAME", "border_wait_times"),
+        user=os.getenv("DB_USER", "postgres"),
+        password=os.getenv("DB_PASSWORD", ""),
+        port=int(os.getenv("DB_PORT", "5432")),
+    )
+    _shown = f"{DSN['host']}:{DSN['port']}/{DSN['dbname']}"
 
 DIMS = ["dim_port", "dim_scenario", "dim_cost_params", "dim_date"]
 
 
+def _connect():
+    return psycopg2.connect(DSN) if isinstance(DSN, str) else psycopg2.connect(**DSN)
+
+
 def main() -> None:
-    with psycopg2.connect(**DSN) as conn:
+    print(f"connecting to {_shown} …")
+    with _connect() as conn:
         for d in DIMS:
             df = pd.read_sql(f"SELECT * FROM gold.{d}", conn)
             df.to_csv(OUT / f"{d}.csv", index=False)

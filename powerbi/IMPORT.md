@@ -7,10 +7,12 @@ publishes with zero refresh/gateway setup.
 ## Refresh the snapshot files
 
 ```bash
-DB_HOST=localhost DB_PORT=5544 DB_NAME=border_wait_times \
-  DB_USER=postgres DB_PASSWORD=border_pass_2026 \
+DATABASE_URL="postgres://postgres:border_pass_2026@localhost:5544/border_wait_times" \
   python powerbi/export_gold.py
 ```
+
+> Use the port your container publishes (`docker compose ps` — e.g. `5544`), **not**
+> `5432` if a Homebrew Postgres is also running there.
 
 Writes to `powerbi/data/`:
 
