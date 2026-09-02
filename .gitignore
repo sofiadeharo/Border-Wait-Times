@@ -31,3 +31,6 @@ mlruns/
 .ci-venv/
 .mlflow/
 mlartifacts/
+
+# Power BI data snapshots (regenerate with powerbi/export_gold.py)
+powerbi/data/
