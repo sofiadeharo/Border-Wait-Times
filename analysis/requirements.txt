@@ -1,0 +1,8 @@
+# Stage 2 — El Paso / Juárez economic analysis
+numpy>=1.26
+pandas>=2.2
+requests>=2.31
+statsmodels>=0.14
+matplotlib>=3.8
+jupyter>=1.0
+nbconvert>=7.0

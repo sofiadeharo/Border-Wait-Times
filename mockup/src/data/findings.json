@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-09-01T04:22:32.816030+00:00",
+  "sample": {
+    "start": "2000-01-01",
+    "end": "2026-07-01",
+    "n": 319
+  },
+  "headline": {
+    "stat": "-10%",
+    "label": "drop in El Paso personal-vehicle crossings during the 2019 CBP officer reassignment (Mar\u2013Aug), net of seasonality, trend, the peso and US retail sales \u2014 while pedestrian crossings rose +28% as travelers switched modes"
+  },
+  "pearson_crossings_activity": -0.541,
+  "cointegration": {
+    "pair": "El Paso crossings ~ retail-trade employment (log levels, 2000\u20132026)",
+    "resid_adf_p": 0.3934,
+    "long_run_beta": -0.139,
+    "cointegrated": false
+  },
+  "granger": {
+    "crossings_to_activity_p": 0.0567,
+    "activity_to_crossings_p": 0.0002
+  },
+  "event_2019": {
+    "window": "2019-03 .. 2019-08",
+    "crossings_pct": -9.93,
+    "crossings_p": 0.002,
+    "pedestrians_pct": 27.96,
+    "pedestrians_p": 0.0,
+    "retail_emp_pct": -1.71,
+    "retail_emp_p": 0.1182,
+    "sales_tax_pct": 1.46,
+    "sales_tax_p": 0.1107,
+    "sales_tax_move_musd": 0.7,
+    "crossings_drop_pct_raw": -18.6
+  },
+  "event_covid": {
+    "window": "2020-04 .. 2021-10",
+    "crossings_pct": -39.38,
+    "crossings_p": 0.0,
+    "retail_emp_pct": -5.91,
+    "retail_emp_p": 0.0051
+  },
+  "channels": {
+    "composite_corr_emp_yoy": 0.529,
+    "rows": [
+      {
+        "key": "crossings",
+        "label": "Personal vehicles",
+        "corr_emp_yoy": 0.435,
+        "corr_retail_yoy": 0.617,
+        "e2019_pct": -9.93,
+        "e2019_p": 0.002,
+        "ecovid_pct": -39.38,
+        "ecovid_p": 0.0
+      },
+      {
+        "key": "pedestrians",
+        "label": "Pedestrians",
+        "corr_emp_yoy": 0.349,
+        "corr_retail_yoy": 0.361,
+        "e2019_pct": 27.96,
+        "e2019_p": 0.0,
+        "ecovid_pct": -54.02,
+        "ecovid_p": 0.0
+      },
+      {
+        "key": "trucks",
+        "label": "Trucks (freight)",
+        "corr_emp_yoy": 0.359,
+        "corr_retail_yoy": 0.347,
+        "e2019_pct": 1.07,
+        "e2019_p": 0.5435,
+        "ecovid_pct": -1.32,
+        "ecovid_p": 0.7498
+      },
+      {
+        "key": "bus_pax",
+        "label": "Bus passengers",
+        "corr_emp_yoy": 0.283,
+        "corr_retail_yoy": 0.363,
+        "e2019_pct": 38.8,
+        "e2019_p": 0.0001,
+        "ecovid_pct": -52.37,
+        "ecovid_p": 0.0005
+      },
+      {
+        "key": "border_activity",
+        "label": "Composite index",
+        "corr_emp_yoy": 0.529,
+        "corr_retail_yoy": 0.596
+      }
+    ]
+  },
+  "commerce": {
+    "sample": "2016-01 .. 2026-01 (quarterly, n=41)",
+    "corr_crossings_retail_levels": 0.103,
+    "corr_crossings_retail_yoy": 0.664,
+    "retail_2019_pct": -0.68,
+    "retail_2019_p": 0.391,
+    "retail_covid_pct": -3.28,
+    "retail_covid_p": 0.191,
+    "accom_2019_pct": 3.87,
+    "accom_covid_pct": -14.12
+  },
+  "note": "Estimates from analyze.py. Event effects are HAC-robust (Newey\u2013West, 6 lags) OLS on log monthly series with month fixed effects, a linear time trend, and log peso / log US-retail controls. Cointegration: Engle\u2013Granger two-step."
+}
