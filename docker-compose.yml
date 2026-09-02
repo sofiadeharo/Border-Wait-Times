@@ -78,25 +78,6 @@ services:
       - cbp_network
     restart: "no"
 
-  ml_training:
-    build:
-      context: .
-      dockerfile: backend/ml/Dockerfile
-    container_name: ml_training
-    environment:
-      DB_HOST: ${DB_HOST:-postgres}
-      DB_NAME: ${DB_NAME:-border_wait_times}
-      DB_USER: ${DB_USER:-postgres}
-      DB_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
-      DB_PORT: 5432
-    depends_on:
-      postgres:
-        condition: service_healthy
-    volumes:
-      - ./logs:/app/logs
-    networks:
-      - cbp_network
-
   api:
     build:
       context: .
