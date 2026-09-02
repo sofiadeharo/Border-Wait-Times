@@ -7,7 +7,9 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD:-border_pass_2026}
       POSTGRES_DB: ${DB_NAME:-border_wait_times}
     ports:
-      - "${DB_HOST_PORT:-5433}:5432"
+      # exposed on the host so local tools (Power BI Desktop, Azure Data Studio,
+      # pgAdmin) connect to localhost:5432 exactly as they would to Azure PG
+      - "${DB_HOST_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/init.sql

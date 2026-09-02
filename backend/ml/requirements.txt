@@ -1,6 +1,6 @@
+xgboost==2.1.1
+mlflow>=2.14,<3
+scikit-learn==1.6.1
 pandas>=2.0.0
-statsmodels>=0.14.0
+numpy>=1.26
 psycopg2-binary==2.9.9
-python-dotenv==1.0.0
-pytz==2024.1
-APScheduler==3.10.4

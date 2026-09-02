@@ -1,0 +1,36 @@
+name: pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/api/requirements.txt
+          pip install -r backend/ml/requirements.txt
+          pip install pytest httpx
+
+      - name: Unit tests (data cleaning + API)
+        run: pytest tests/ -v
+
+      - name: Warehouse SQL smoke test
+        run: |
+          docker run -d --name pg -e POSTGRES_PASSWORD=test \
+            -e POSTGRES_DB=border_wait_times -p 5432:5432 postgres:16-alpine
+          for i in $(seq 1 30); do
+            pg_isready -h localhost -p 5432 && break; sleep 1
+          done
+          export DATABASE_URL="postgres://postgres:test@localhost:5432/border_wait_times"
+          bash backend/warehouse/apply.sh

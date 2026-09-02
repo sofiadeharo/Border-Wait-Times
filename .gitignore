@@ -25,3 +25,9 @@ npm-debug.log
 
 # OS
 .DS_Store
+
+# ML / CI
+mlruns/
+.ci-venv/
+.mlflow/
+mlartifacts/
