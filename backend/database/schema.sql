@@ -8,8 +8,10 @@ CREATE TABLE IF NOT EXISTS wait_times (
     status VARCHAR(50),
     timestamp TIMESTAMP WITH TIME ZONE NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    lanes_open INTEGER,
     UNIQUE (port_id, crossing_type, lane_type, timestamp)
 );
+ALTER TABLE wait_times ADD COLUMN IF NOT EXISTS lanes_open INTEGER;
 
 CREATE INDEX IF NOT EXISTS idx_port_id_timestamp 
     ON wait_times(port_id, timestamp DESC);
@@ -127,3 +129,31 @@ CREATE INDEX IF NOT EXISTS idx_user_reported_wait_times_crossing_time
 
 CREATE INDEX IF NOT EXISTS idx_user_reported_wait_times_submitter_ip
     ON user_reported_wait_times(submitter_ip);
+
+-- Community reports next to the nearest official CBP reading for the same lane
+-- (within +/- 90 min of the reported crossing). Excludes submitter_ip on purpose.
+CREATE OR REPLACE VIEW user_reports_vs_cbp AS
+SELECT
+    r.id,
+    r.port_name,
+    r.crossing_type,
+    r.lane_type,
+    r.crossing_time,
+    r.reported_wait_minutes,
+    c.wait_time_minutes                         AS cbp_wait_minutes,
+    c.timestamp                                 AS cbp_reading_at,
+    r.reported_wait_minutes - c.wait_time_minutes AS difference_minutes,
+    r.notes,
+    r.submitted_at
+FROM user_reported_wait_times r
+LEFT JOIN LATERAL (
+    SELECT w.wait_time_minutes, w.timestamp
+    FROM wait_times w
+    WHERE w.port_name = r.port_name
+      AND w.crossing_type = r.crossing_type
+      AND w.lane_type = r.lane_type
+      AND w.timestamp BETWEEN r.crossing_time - INTERVAL '90 minutes'
+                          AND r.crossing_time + INTERVAL '90 minutes'
+    ORDER BY ABS(EXTRACT(EPOCH FROM (w.timestamp - r.crossing_time)))
+    LIMIT 1
+) c ON TRUE;

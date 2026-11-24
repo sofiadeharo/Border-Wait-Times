@@ -1,0 +1,187 @@
+,year,month,day,hour,port_name,crossing_type,lane_type,status,wait_time_minutes,BOTA,days_in_month,baseline_daily_volume_vehiculos_BOTA
+0,2026,6,19,5,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,297294.0,30,9909.8
+1,2026,6,19,5,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,297294.0,30,9909.8
+2,2026,6,19,5,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,47.0,297294.0,30,9909.8
+3,2026,6,19,5,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,36.0,297294.0,30,9909.8
+4,2026,6,19,5,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,297294.0,30,9909.8
+5,2026,6,19,5,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,no delay,1.0,297294.0,30,9909.8
+6,2026,6,30,0,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,297294.0,30,9909.8
+7,2026,6,30,0,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,297294.0,30,9909.8
+8,2026,6,30,0,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,50.0,297294.0,30,9909.8
+9,2026,6,30,0,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,45.0,297294.0,30,9909.8
+10,2026,6,30,0,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,297294.0,30,9909.8
+11,2026,6,30,0,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,297294.0,30,9909.8
+12,2026,6,30,21,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,297294.0,30,9909.8
+13,2026,6,30,21,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,297294.0,30,9909.8
+14,2026,6,30,21,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,Lanes Closed,0.0,297294.0,30,9909.8
+15,2026,6,30,21,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,Lanes Closed,0.0,297294.0,30,9909.8
+16,2026,6,30,21,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,297294.0,30,9909.8
+17,2026,6,30,21,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,297294.0,30,9909.8
+18,2026,7,1,1,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+19,2026,7,1,1,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+20,2026,7,1,1,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+21,2026,7,1,1,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+22,2026,7,1,1,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+23,2026,7,1,1,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+24,2026,7,1,2,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+25,2026,7,1,2,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+26,2026,7,1,2,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+27,2026,7,1,2,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+28,2026,7,1,2,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+29,2026,7,1,2,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+30,2026,7,1,3,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+31,2026,7,1,3,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+32,2026,7,1,3,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+33,2026,7,1,3,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+34,2026,7,1,3,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+35,2026,7,1,3,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+36,2026,7,1,4,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+37,2026,7,1,4,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+38,2026,7,1,4,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+39,2026,7,1,4,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+40,2026,7,1,4,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+41,2026,7,1,4,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+42,2026,7,1,5,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+43,2026,7,1,5,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+44,2026,7,1,5,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+45,2026,7,1,5,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+46,2026,7,1,5,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+47,2026,7,1,5,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+48,2026,7,1,19,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,delay,15.0,300002.0,31,9677.483870967742
+49,2026,7,1,19,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,delay,15.0,300002.0,31,9677.483870967742
+50,2026,7,1,19,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,100.0,300002.0,31,9677.483870967742
+51,2026,7,1,19,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,100.0,300002.0,31,9677.483870967742
+52,2026,7,1,19,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+53,2026,7,1,19,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+54,2026,7,1,20,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,delay,15.0,300002.0,31,9677.483870967742
+55,2026,7,1,20,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,delay,15.0,300002.0,31,9677.483870967742
+56,2026,7,1,20,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,105.0,300002.0,31,9677.483870967742
+57,2026,7,1,20,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,105.0,300002.0,31,9677.483870967742
+58,2026,7,1,20,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+59,2026,7,1,20,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+60,2026,7,1,21,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+61,2026,7,1,21,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+62,2026,7,1,21,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,110.0,300002.0,31,9677.483870967742
+63,2026,7,1,21,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,110.0,300002.0,31,9677.483870967742
+64,2026,7,1,21,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+65,2026,7,1,21,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+66,2026,7,2,0,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+67,2026,7,2,0,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+68,2026,7,2,0,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,28.0,300002.0,31,9677.483870967742
+69,2026,7,2,0,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,25.0,300002.0,31,9677.483870967742
+70,2026,7,2,0,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+71,2026,7,2,0,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+72,2026,7,2,18,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+73,2026,7,2,18,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+74,2026,7,2,18,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,30.0,300002.0,31,9677.483870967742
+75,2026,7,2,18,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,28.0,300002.0,31,9677.483870967742
+76,2026,7,2,18,Bridge of the Americas (BOTA),Pedestrian,Standard,delay,14.0,300002.0,31,9677.483870967742
+77,2026,7,2,18,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+78,2026,7,2,20,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+79,2026,7,2,20,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+80,2026,7,2,20,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,30.0,300002.0,31,9677.483870967742
+81,2026,7,2,20,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,28.0,300002.0,31,9677.483870967742
+82,2026,7,2,20,Bridge of the Americas (BOTA),Pedestrian,Standard,delay,14.0,300002.0,31,9677.483870967742
+83,2026,7,2,20,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+84,2026,7,2,21,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+85,2026,7,2,21,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+86,2026,7,2,21,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,30.0,300002.0,31,9677.483870967742
+87,2026,7,2,21,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,28.0,300002.0,31,9677.483870967742
+88,2026,7,2,21,Bridge of the Americas (BOTA),Pedestrian,Standard,delay,14.0,300002.0,31,9677.483870967742
+89,2026,7,2,21,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+90,2026,7,2,23,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+91,2026,7,2,23,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+92,2026,7,2,23,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,30.0,300002.0,31,9677.483870967742
+93,2026,7,2,23,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,28.0,300002.0,31,9677.483870967742
+94,2026,7,2,23,Bridge of the Americas (BOTA),Pedestrian,Standard,delay,14.0,300002.0,31,9677.483870967742
+95,2026,7,2,23,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+96,2026,7,3,3,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+97,2026,7,3,3,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+98,2026,7,3,3,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,30.0,300002.0,31,9677.483870967742
+99,2026,7,3,3,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,28.0,300002.0,31,9677.483870967742
+100,2026,7,3,3,Bridge of the Americas (BOTA),Pedestrian,Standard,delay,14.0,300002.0,31,9677.483870967742
+101,2026,7,3,3,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+102,2026,7,3,17,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,delay,10.0,300002.0,31,9677.483870967742
+103,2026,7,3,17,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,no delay,5.0,300002.0,31,9677.483870967742
+104,2026,7,3,17,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,60.0,300002.0,31,9677.483870967742
+105,2026,7,3,17,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,65.0,300002.0,31,9677.483870967742
+106,2026,7,3,17,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+107,2026,7,3,17,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,no delay,2.0,300002.0,31,9677.483870967742
+108,2026,7,3,20,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+109,2026,7,3,20,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+110,2026,7,3,20,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,85.0,300002.0,31,9677.483870967742
+111,2026,7,3,20,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,80.0,300002.0,31,9677.483870967742
+112,2026,7,3,20,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+113,2026,7,3,20,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,no delay,1.0,300002.0,31,9677.483870967742
+114,2026,7,3,21,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+115,2026,7,3,21,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+116,2026,7,3,21,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,85.0,300002.0,31,9677.483870967742
+117,2026,7,3,21,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,80.0,300002.0,31,9677.483870967742
+118,2026,7,3,21,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+119,2026,7,3,21,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,no delay,1.0,300002.0,31,9677.483870967742
+120,2026,7,3,22,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+121,2026,7,3,22,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+122,2026,7,3,22,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,75.0,300002.0,31,9677.483870967742
+123,2026,7,3,22,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,75.0,300002.0,31,9677.483870967742
+124,2026,7,3,22,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+125,2026,7,3,22,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,no delay,1.0,300002.0,31,9677.483870967742
+126,2026,7,4,0,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+127,2026,7,4,0,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+128,2026,7,4,0,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,62.0,300002.0,31,9677.483870967742
+129,2026,7,4,0,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,58.0,300002.0,31,9677.483870967742
+130,2026,7,4,0,Bridge of the Americas (BOTA),Pedestrian,Standard,delay,22.0,300002.0,31,9677.483870967742
+131,2026,7,4,0,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+132,2026,7,4,2,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+133,2026,7,4,2,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+134,2026,7,4,2,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,60.0,300002.0,31,9677.483870967742
+135,2026,7,4,2,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,55.0,300002.0,31,9677.483870967742
+136,2026,7,4,2,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,8.0,300002.0,31,9677.483870967742
+137,2026,7,4,2,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+138,2026,7,4,23,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+139,2026,7,4,23,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+140,2026,7,4,23,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,55.0,300002.0,31,9677.483870967742
+141,2026,7,4,23,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,53.0,300002.0,31,9677.483870967742
+142,2026,7,4,23,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,4.0,300002.0,31,9677.483870967742
+143,2026,7,4,23,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+144,2026,7,6,19,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+145,2026,7,6,19,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+146,2026,7,6,19,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,85.0,300002.0,31,9677.483870967742
+147,2026,7,6,19,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,80.0,300002.0,31,9677.483870967742
+148,2026,7,6,19,Bridge of the Americas (BOTA),Pedestrian,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+149,2026,7,6,19,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,no delay,2.0,300002.0,31,9677.483870967742
+150,2026,7,7,17,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+151,2026,7,7,17,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+152,2026,7,7,17,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,42.0,300002.0,31,9677.483870967742
+153,2026,7,7,17,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,40.0,300002.0,31,9677.483870967742
+154,2026,7,7,17,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,4.0,300002.0,31,9677.483870967742
+155,2026,7,7,17,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+156,2026,7,7,18,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+157,2026,7,7,18,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+158,2026,7,7,18,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,42.0,300002.0,31,9677.483870967742
+159,2026,7,7,18,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,40.0,300002.0,31,9677.483870967742
+160,2026,7,7,18,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,4.0,300002.0,31,9677.483870967742
+161,2026,7,7,18,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+162,2026,7,7,19,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+163,2026,7,7,19,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+164,2026,7,7,19,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,42.0,300002.0,31,9677.483870967742
+165,2026,7,7,19,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,40.0,300002.0,31,9677.483870967742
+166,2026,7,7,19,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,4.0,300002.0,31,9677.483870967742
+167,2026,7,7,19,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+168,2026,7,13,20,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+169,2026,7,13,20,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+170,2026,7,13,20,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,85.0,300002.0,31,9677.483870967742
+171,2026,7,13,20,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,80.0,300002.0,31,9677.483870967742
+172,2026,7,13,20,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,5.0,300002.0,31,9677.483870967742
+173,2026,7,13,20,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,no delay,1.0,300002.0,31,9677.483870967742
+174,2026,7,14,18,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+175,2026,7,14,18,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+176,2026,7,14,18,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,52.0,300002.0,31,9677.483870967742
+177,2026,7,14,18,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,50.0,300002.0,31,9677.483870967742
+178,2026,7,14,18,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,4.0,300002.0,31,9677.483870967742
+179,2026,7,14,18,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742
+180,2026,7,14,20,Bridge of the Americas (BOTA),Commercial Vehicle,Standard,Lanes Closed,0.0,300002.0,31,9677.483870967742
+181,2026,7,14,20,Bridge of the Americas (BOTA),Commercial Vehicle,FAST,Lanes Closed,0.0,300002.0,31,9677.483870967742
+182,2026,7,14,20,Bridge of the Americas (BOTA),Passenger Vehicle,Standard,delay,52.0,300002.0,31,9677.483870967742
+183,2026,7,14,20,Bridge of the Americas (BOTA),Passenger Vehicle,Ready Lane,delay,50.0,300002.0,31,9677.483870967742
+184,2026,7,14,20,Bridge of the Americas (BOTA),Pedestrian,Standard,no delay,4.0,300002.0,31,9677.483870967742
+185,2026,7,14,20,Bridge of the Americas (BOTA),Pedestrian,Ready Lane,Lanes Closed,0.0,300002.0,31,9677.483870967742

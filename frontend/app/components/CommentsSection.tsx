@@ -23,7 +23,7 @@ const SEED_COMMENTS: Comment[] = [
   },
 ]
 
-// LAYOUT: comments card — same low-opacity white treatment as the rest of the blog page.
+// LAYOUT: comments card — same `.card` style as the rest of the site.
 // ACTION: this is a UI preview only. `comments` lives in local component state, so it
 // resets on refresh — nothing is sent to a server. To make it real: POST to a new API
 // route backed by a database table, and fetch the list here instead of using SEED_COMMENTS.
@@ -43,24 +43,24 @@ export default function CommentsSection() {
   }
 
   return (
-    <div className="rounded-lg border border-white/40 dark:border-white/10 bg-white/40 dark:bg-white/10 backdrop-blur-md p-5">
-      <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-1">
+    <div className="card card-pad">
+      <h2 className="section-title mb-1">
         Comments
       </h2>
-      <p className="text-xs text-blackberry-cream/50 dark:text-almond-cream/50 mb-4">
+      <p className="text-xs text-ink-3 mb-4">
         Preview only for now — comments aren&apos;t saved yet.
       </p>
 
       <ul className="space-y-3 mb-5">
         {comments.map((comment, i) => (
-          <li key={i} className="rounded-md bg-white/40 dark:bg-white/5 p-3">
-            <p className="text-sm font-medium text-blackberry-cream dark:text-almond-cream">
+          <li key={i} className="rounded-lg bg-surface-muted p-3">
+            <p className="text-sm font-medium text-ink">
               {comment.name}
-              <span className="ml-2 text-xs font-normal text-blackberry-cream/50 dark:text-almond-cream/50">
+              <span className="ml-2 text-xs font-normal text-ink-3">
                 {comment.postedAt}
               </span>
             </p>
-            <p className="text-sm text-blackberry-cream/80 dark:text-almond-cream/80 mt-1">{comment.text}</p>
+            <p className="text-sm text-ink-2 mt-1">{comment.text}</p>
           </li>
         ))}
       </ul>
@@ -70,18 +70,18 @@ export default function CommentsSection() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Name (optional)"
-          className="w-full rounded border border-blackberry-cream/20 dark:border-almond-cream/20 bg-white/50 dark:bg-white/10 p-2 text-sm text-blackberry-cream dark:text-almond-cream placeholder:text-blackberry-cream/40 dark:placeholder:text-almond-cream/40"
+          className="field mt-0"
         />
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Add a comment..."
           rows={3}
-          className="w-full rounded border border-blackberry-cream/20 dark:border-almond-cream/20 bg-white/50 dark:bg-white/10 p-2 text-sm text-blackberry-cream dark:text-almond-cream placeholder:text-blackberry-cream/40 dark:placeholder:text-almond-cream/40"
+          className="field mt-0"
         />
         <button
           onClick={addComment}
-          className="rounded bg-blackberry-cream dark:bg-white text-white dark:text-blackberry-cream text-sm font-medium px-4 py-2"
+          className="btn btn-primary"
         >
           Post comment
         </button>

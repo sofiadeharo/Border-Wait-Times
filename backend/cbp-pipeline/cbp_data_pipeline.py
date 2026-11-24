@@ -87,6 +87,7 @@ class WaitTimeData:
     wait_time_minutes: int
     status: str
     timestamp: datetime
+    lanes_open: Optional[int] = None  # CBP-reported open lanes for this lane type
     
     def to_dict(self):
         return {
@@ -97,6 +98,7 @@ class WaitTimeData:
             'wait_time_minutes': self.wait_time_minutes,
             'status': self.status,
             'timestamp': self.timestamp,
+            'lanes_open': self.lanes_open,
             'created_at': datetime.now(pytz.UTC)
         }
 
@@ -172,6 +174,11 @@ class CBPAPIClient:
                         except ValueError:
                             wait_time = 0
 
+                        try:
+                            lanes_open = int(lane.get('lanes_open') or '')
+                        except ValueError:
+                            lanes_open = None
+
                         wait_data = WaitTimeData(
                             port_id=port_id,
                             port_name=port_name,
@@ -179,7 +186,8 @@ class CBPAPIClient:
                             lane_type=lane_type,
                             wait_time_minutes=wait_time,
                             status=status,
-                            timestamp=now
+                            timestamp=now,
+                            lanes_open=lanes_open
                         )
                         parsed_data.append(wait_data)
                         logger.debug(
@@ -227,6 +235,8 @@ class DatabaseHandler:
                     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
                     UNIQUE (port_id, crossing_type, lane_type, timestamp)
                 );
+
+                ALTER TABLE wait_times ADD COLUMN IF NOT EXISTS lanes_open INTEGER;
                 
                 CREATE INDEX IF NOT EXISTS idx_port_id_timestamp 
                     ON wait_times(port_id, timestamp DESC);
@@ -262,7 +272,8 @@ class DatabaseHandler:
                     wt.lane_type,
                     wt.wait_time_minutes,
                     wt.status,
-                    wt.timestamp
+                    wt.timestamp,
+                    wt.lanes_open
                 )
                 for wt in wait_times
             ]
@@ -273,8 +284,8 @@ class DatabaseHandler:
                     """
                     INSERT INTO wait_times 
                     (port_id, port_name, crossing_type, lane_type, 
-                     wait_time_minutes, status, timestamp)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                     wait_time_minutes, status, timestamp, lanes_open)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT (port_id, crossing_type, lane_type, timestamp) 
                     DO NOTHING
                     """,
