@@ -2,32 +2,28 @@ import CommentsSection from '../components/CommentsSection'
 
 // LAYOUT: static content page — each `<section>` below is a self-contained
 // card; add/remove/reorder `<section>` blocks to change the topics covered.
-// COLORS: cards use a low-opacity white ("frosted glass") treatment —
-// `bg-white/40 dark:bg-white/10 backdrop-blur-md` — so the background photo
-// stays visible through them. Keep new sections consistent with this class.
+// COLORS: cards use the shared `.card card-pad` classes from globals.css.
+// Keep new sections consistent with them.
 export default function Blog() {
   return (
-    <main className="min-h-screen p-8 font-sans">
+    <main className="page">
       <div className="max-w-2xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-2xl font-semibold text-blackberry-cream dark:text-almond-cream">
-            The Who and The Why
-          </h1>
-          <p className="text-sm text-blackberry-cream/60 dark:text-almond-cream/60 mt-1">
-Meet the purpose of the project          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 rounded-lg">
+        <header className="page-header">
+          <h1 className="page-title">The Who and The Why</h1>
+          <p className="page-subtitle">Meet the purpose of the project</p>
+        </header>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         {}
-          <div className="p-4 rounded-lg bg-white/30 dark:bg-white/10 backdrop-blur-lg">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-2">
+          <div className="card card-pad prose-body">
+            <h2 className="section-title mb-2">
               A Little About Me!
             </h2>
             <p>
               My name is Sofia De Haro,  a Data Analytics and Computer Science student at UTEP. With a background in AI education and machine learning implementations, I built this platform to apply advanced predictive modeling to regional transit challenges at the US-Mexico border.
             </p>
           </div>
-          <div className="p-4 rounded-lg bg-white/30 dark:bg-white/10 backdrop-blur-lg">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-2">
+          <div className="card card-pad prose-body">
+            <h2 className="section-title mb-2">
               Why This Project?
             </h2>
             <p>               I built this project to address the lack of real-time information about wait times at the US-Mexico border. By leveraging data analytics and machine learning, I aim to provide travelers with more accurate and timely information to help them plan their journeys.
@@ -36,9 +32,9 @@ Meet the purpose of the project          </p>
           </div>
 
         </div>
-        <article className="space-y-6 text-sm leading-relaxed text-blackberry-cream/90 dark:text-almond-cream/90">
-          <section className="rounded-lg border border-white/40 dark:border-white/10 bg-white/30 dark:bg-white/10 backdrop-blur-lg p-5">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-2">
+        <article className="space-y-4 prose-body">
+          <section className="card card-pad">
+            <h2 className="section-title mb-2">
               Official crossing data
             </h2>
             <p>
@@ -49,8 +45,8 @@ Meet the purpose of the project          </p>
             </p>
           </section>
 
-          <section className="rounded-lg border border-white/40 dark:border-white/10 bg-white/30 dark:bg-white/10 backdrop-blur-lg p-5">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-2">
+          <section className="card card-pad">
+            <h2 className="section-title mb-2">
               Weather and holiday context
             </h2>
             <p>
@@ -61,8 +57,8 @@ Meet the purpose of the project          </p>
             </p>
           </section>
 
-          <section className="rounded-lg border border-white/40 dark:border-white/10 bg-white/30 dark:bg-white/10 backdrop-blur-lg p-5">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-2">
+          <section className="card card-pad">
+            <h2 className="section-title mb-2">
               Community-reported wait times
             </h2>
             <p>
@@ -78,8 +74,8 @@ Meet the purpose of the project          </p>
             </p>
           </section>
 
-          <section className="rounded-lg border border-white/40 dark:border-white/10 bg-white/30 dark:bg-white/10 backdrop-blur-lg p-5">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-2">
+          <section className="card card-pad">
+            <h2 className="section-title mb-2">
               What we don&apos;t do
             </h2>
             <p>
@@ -92,8 +88,8 @@ Meet the purpose of the project          </p>
 
           {/* LAYOUT: photo placeholders — drop real images into frontend/public/ and
               replace each placeholder `<div>` with a Next.js <Image>. */}
-          {/* <section className="rounded-lg border border-white/40 dark:border-white/10 bg-white/30 dark:bg-white/10 backdrop-blur-lg p-5">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-1">
+          {/* <section className="card card-pad">
+            <h2 className="section-title mb-1">
               Photos from the Bridge
             </h2>
             <p className="text-xs text-blackberry-cream/50 dark:text-almond-cream/50 mb-4">
@@ -112,24 +108,24 @@ Meet the purpose of the project          </p>
           </section> */}
 
           {/* LAYOUT: general announcements — not tied to code changes, edit freely. */}
-          <section className="rounded-lg border border-white/40 dark:border-white/10 bg-white/30 dark:bg-white/10 backdrop-blur-lg p-5">
-            <h2 className="text-lg font-medium text-blackberry-cream dark:text-almond-cream mb-3">
+          <section className="card card-pad">
+            <h2 className="section-title mb-3">
               Updates
             </h2>
             <ul className="space-y-3">
               <li>
-                <p className="text-sm font-medium text-blackberry-cream dark:text-almond-cream">
+                <p className="text-sm font-medium text-ink">
                   Interactive bridge map added
                 </p>
-                <p className="text-xs text-blackberry-cream/60 dark:text-almond-cream/60">
+                <p className="text-xs text-ink-3">
                   Pick a port of entry on the map to see its wait times broken down by lane.
                 </p>
               </li>
               <li>
-                <p className="text-sm font-medium text-blackberry-cream dark:text-almond-cream">
+                <p className="text-sm font-medium text-ink">
                   Community wait-time reports launched
                 </p>
-                <p className="text-xs text-blackberry-cream/60 dark:text-almond-cream/60">
+                <p className="text-xs text-ink-3">
                   Crossed recently? Share your wait time from the Wait Times tab.
                 </p>
               </li>

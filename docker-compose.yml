@@ -114,7 +114,7 @@ services:
       postgres:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -132,6 +132,22 @@ services:
       - "3000:3000"
     depends_on:
       api:
+        condition: service_healthy
+    networks:
+      - cbp_network
+
+  # Local database browser: http://localhost:8080
+  # System: PostgreSQL · Server: postgres · User/Password/Database: the DB_* values above.
+  # Bound to 127.0.0.1 so it is only reachable from this machine.
+  adminer:
+    image: adminer:4.8.1
+    container_name: cbp_adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      postgres:
         condition: service_healthy
     networks:
       - cbp_network

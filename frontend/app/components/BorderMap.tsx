@@ -15,7 +15,7 @@ function portIcon(highlighted: boolean) {
     className: '',
     html: `<div style="
       width:${size}px;height:${size}px;border-radius:9999px;
-      background:#184e77;border:2px solid #0d0d4eff;
+      background:#184e77;border:2px solid #ffffff;
       box-shadow:0 1px 4px rgba(0,0,0,0.4);
     "></div>`,
     iconSize: [size, size],

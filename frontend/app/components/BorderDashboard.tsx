@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import { PORTS, WAIT_TAG, waitLevel, WaitTime } from '../lib/waitTimes'
+import { formatUsd, PORTS, WAIT_TAG, waitLevel, WaitTime } from '../lib/waitTimes'
 
 // ACTION: BorderMap uses `window`/`document` (Leaflet), so it's loaded client-only
 // (`ssr: false`) to avoid breaking server rendering. `loading` is what shows
@@ -10,20 +10,32 @@ import { PORTS, WAIT_TAG, waitLevel, WaitTime } from '../lib/waitTimes'
 const BorderMap = dynamic(() => import('./BorderMap'), {
   ssr: false,
   loading: () => (
-    <div className="flex h-full w-full items-center justify-center text-sm text-blackberry-cream/50">
+    <div className="flex h-full w-full items-center justify-center text-sm text-ink-3">
       Loading map...
     </div>
   ),
 })
+
+// LAYOUT: one cost-of-delay summary card per loss type shown above the lane cards.
+const IMPACT_CARDS = [
+  {
+    category: 'passenger',
+    title: 'Cost of delay · passenger vehicles',
+    subtitle: 'Travelers’ time + lost retail spending',
+  },
+  {
+    category: 'commercial',
+    title: 'Cost of delay on commercial vehicles',
+    subtitle: 'Productivity, cargo in transit + late deliveries',
+  },
+] as const
 
 interface BorderDashboardProps {
   data: WaitTime[]
 }
 
 // LAYOUT: the main dashboard card — a two-column panel (port list left, map or
-// port detail right) that is deliberately solid white (`bg-white`) rather than
-// the translucent/frosted look used elsewhere in the app, so it reads as a
-// focal "control panel" over the background photo.
+// port detail right) using the shared `.card` style.
 export default function BorderDashboard({ data }: BorderDashboardProps) {
   // ACTION: `null` = show the map; a port name = show that port's wait times.
   // Set by clicking a port button below or a marker on the map (see BorderMap's onSelectPort).
@@ -37,28 +49,39 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
     acc[row.crossing_type].push(row)
     return acc
   }, {})
+  // ACTION: port-wide cost of the current CBP delays, one summary per loss type
+  // (the API splits each port's volume so lane losses add up to the port total).
+  const impactSummaries = IMPACT_CARDS.map((card) => {
+    const rows = portRows.filter((row) => row.economic_impact?.delay_category === card.category)
+    return {
+      ...card,
+      openLanes: rows.length,
+      lossPerHour: rows.reduce((sum, row) => sum + (row.economic_impact?.total_loss_usd ?? 0), 0),
+      lanesInDelay: rows.filter((row) => row.economic_impact?.is_delay).length,
+      threshold: rows[0]?.economic_impact?.delay_threshold_minutes,
+    }
+  }).filter((s) => s.openLanes > 0)
 
   return (
     // LAYOUT: `flex-col` on mobile (port list stacks above the map/detail area),
-    // `sm:flex-row` on larger screens (side-by-side). `rounded-2xl`/`shadow-xl`
-    // give it the "card floating over the photo" look.
-    <div className="mb-8 flex flex-col overflow-hidden rounded-2xl bg-white shadow-xl sm:flex-row">
+    // `sm:flex-row` on larger screens (side-by-side).
+    <div className="card mb-6 flex flex-col overflow-hidden sm:flex-row">
       {/* LAYOUT: left-hand port list. Fixed width on sm+ (`sm:w-56`); on mobile it
           becomes a horizontally-scrolling row of buttons instead (see the inner div). */}
-      <div className="shrink-0 border-b border-blackberry-cream/10 p-4 sm:w-56 sm:border-b-0 sm:border-r">
-        <p className="px-2 pb-3 text-xs font-semibold uppercase tracking-wide text-blackberry-cream/50">
+      <div className="shrink-0 border-b border-line p-4 sm:w-56 sm:border-b-0 sm:border-r">
+        <p className="eyebrow px-3 pb-3">
           Ports of Entry
         </p>
         <div className="flex gap-1 overflow-x-auto sm:flex-col sm:overflow-visible">
           {/* ACTION: resets to the map view. */}
-          {/* COLORS: `bg-blackberry-cream text-white` = selected row, `text-blackberry-cream/70` = unselected. */}
+          {/* COLORS: `bg-accent-soft text-accent` = selected row, `text-ink-2` = unselected. */}
           <button
             onClick={() => setSelectedPort(null)}
             className={
               'shrink-0 whitespace-nowrap rounded-md px-3 py-2 text-left text-sm font-medium transition-colors ' +
               (selectedPort === null
-                ? 'bg-blackberry-cream text-white'
-                : 'text-blackberry-cream/70 hover:bg-blackberry-cream/5 hover:text-blackberry-cream')
+                ? 'bg-accent-soft text-accent'
+                : 'text-ink-2 hover:bg-surface-muted hover:text-ink')
             }
           >
             Map overview
@@ -71,8 +94,8 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
               className={
                 'shrink-0 whitespace-nowrap sm:whitespace-normal rounded-md px-3 py-2 text-left text-sm font-medium transition-colors ' +
                 (selectedPort === port.name
-                  ? 'bg-blackberry-cream text-white'
-                  : 'text-blackberry-cream/70 hover:bg-blackberry-cream/5 hover:text-blackberry-cream')
+                  ? 'bg-accent-soft text-accent'
+                  : 'text-ink-2 hover:bg-surface-muted hover:text-ink')
               }
             >
               {port.name}
@@ -89,25 +112,48 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
         ) : (
           <div className="h-full overflow-y-auto p-5">
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-medium text-blackberry-cream">{selectedPort}</h3>
+              <h3 className="section-title">{selectedPort}</h3>
               {/* ACTION: same as clicking "Map overview" above. */}
               <button
                 onClick={() => setSelectedPort(null)}
-                className="text-sm font-medium text-blackberry-cream/60 hover:text-blackberry-cream"
+                className="text-sm font-medium text-ink-3 hover:text-accent"
               >
                 ← Back to map
               </button>
             </div>
 
+            {impactSummaries.length > 0 && (
+              <div className="mb-4 grid gap-2 grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+                {impactSummaries.map((s) => (
+                  <div
+                    key={s.category}
+                    className="rounded-lg border border-line bg-surface-muted px-4 py-3"
+                  >
+                    <p className="eyebrow">{s.title}</p>
+                    <p className="mt-1 text-2xl font-mono text-ink">
+                      {formatUsd(s.lossPerHour)}
+                      <span className="text-sm font-sans text-ink-3"> /hr</span>
+                    </p>
+                    <p className="text-xs text-ink-2">{s.subtitle}</p>
+                    <p className="text-xs text-ink-3">
+                      {s.lanesInDelay > 0
+                        ? `${s.lanesInDelay} of ${s.openLanes} open lanes over the ${s.threshold}-min threshold`
+                        : `No lanes over the ${s.threshold}-min threshold`}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {portRows.length === 0 && (
-              <p className="text-sm text-blackberry-cream/50">No wait time data available right now.</p>
+              <p className="text-sm text-ink-3">No wait time data available right now.</p>
             )}
 
             {/* LAYOUT: one sub-section per crossing type (e.g. Passenger Vehicle,
                 Pedestrian), each a 2-column grid of lane cards on sm+ screens. */}
             {Object.entries(groupedByCrossing).map(([crossingType, rows]) => (
               <div key={crossingType} className="mb-4">
-                <h4 className="mb-2 text-sm font-medium uppercase tracking-wide text-blackberry-cream/50">
+                <h4 className="eyebrow mb-2">
                   {crossingType}
                 </h4>
                 {/* LAYOUT: `auto-fit`/`minmax` sizes columns off the *actual* space available
@@ -123,24 +169,29 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
                     return (
                       <div
                         key={`${row.crossing_type}-${row.lane_type}`}
-                        className={`flex items-center justify-between rounded-lg border border-blackberry-cream/10 bg-almond-cream/40 border-l-4 ${tag.border} px-4 py-3`}
+                        className={`flex items-center justify-between rounded-lg border border-line bg-surface border-l-4 ${tag.border} px-4 py-3`}
                       >
                         {/* LAYOUT: `min-w-0` lets this side shrink below its content's natural
                             width (the flexbox default of `min-width: auto` would otherwise refuse
                             to shrink and force an overflow); `break-words` lets long unbroken
                             tokens like "NEXUS/SENTRI" wrap instead of spilling past the card edge. */}
                         <div className="min-w-0">
-                          <p className="text-sm font-medium text-blackberry-cream break-words">{row.lane_type}</p>
-                          <p className="text-xs text-blackberry-cream/60 break-words">{row.status}</p>
+                          <p className="text-sm font-medium text-ink break-words">{row.lane_type}</p>
+                          <p className="text-xs text-ink-3 break-words">{row.status}</p>
                         </div>
                         {/* LAYOUT: `shrink-0` keeps the number column at full size — the lane
                             name on the left is the side that gives way and wraps. */}
                         <div className="shrink-0 text-right pl-3">
-                          <p className="text-2xl font-mono text-blackberry-cream">
+                          <p className="text-2xl font-mono text-ink">
                             {row.wait_time_minutes}
-                            <span className="text-sm font-sans"> min</span>
+                            <span className="text-sm font-sans text-ink-3"> min</span>
                           </p>
                           <p className={`text-xs font-medium ${tag.text}`}>{tag.label}</p>
+                          {row.economic_impact?.is_delay && (
+                            <p className="text-xs font-mono text-ink-2">
+                              {formatUsd(row.economic_impact.total_loss_usd)}/hr
+                            </p>
+                          )}
                         </div>
                       </div>
                     )

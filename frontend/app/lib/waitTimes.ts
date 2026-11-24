@@ -6,6 +6,32 @@ export interface WaitTime {
   wait_time_minutes: number
   status: string
   timestamp: string
+  // Set by the API for open Passenger Vehicle lanes only; null otherwise.
+  economic_impact?: EconomicImpact | null
+}
+
+// Cost of one hour at this wait (see backend/Economic_Ratios/getting_ratios.py).
+// Passenger lanes -> time + retail loss; commercial lanes -> productivity + freight loss.
+export interface EconomicImpact {
+  delay_category: 'passenger' | 'commercial'
+  is_delay: boolean
+  wait_minutes: number
+  excess_delay_minutes: number
+  delay_threshold_minutes: number
+  vehicles_per_hour: number
+  total_loss_usd: number
+  basis: 'per_hour'
+  // passenger
+  time_cost_usd?: number
+  retail_loss_usd?: number
+  // commercial
+  productivity_cost_usd?: number
+  cargo_in_transit_cost_usd?: number
+  late_delivery_cost_usd?: number
+}
+
+export function formatUsd(value: number): string {
+  return value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })
 }
 
 // ACTION: statuses that mean the lane isn't actually operating — CBP reports

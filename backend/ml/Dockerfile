@@ -14,9 +14,10 @@ COPY backend/ml/requirements.txt .
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
-COPY backend/ml/day_type_model.py .
-COPY backend/ml/scheduler.py .
+COPY backend/ml/modelo_bota_waittimes_passengerlanes_sintetico_rf2.joblib .
 
 RUN mkdir -p logs
 
-CMD ["python", "-u", "scheduler.py"]
+# Model is available at /app/modelo_bota_waittimes_passengerlanes_sintetico_rf2.joblib
+# Container keeps running for model availability
+CMD ["sleep", "infinity"]

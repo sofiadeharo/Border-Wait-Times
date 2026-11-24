@@ -1,0 +1,116 @@
+# Render Blueprint — real-time BOTA border wait-time predictions
+# https://render.com/docs/blueprint-spec
+#
+# Provisions:
+#   - border-wait-times-db            Postgres (holidays, wait_times, ...)
+#   - border-wait-times-api           FastAPI service: /predict, /wait-times, /economic-impact/annual, reports
+#   - border-wait-times-frontend      Next.js site (Wait Times, Playground, Annual Impact, Blog)
+#   - border-wait-times-db-init       cron: applies schema.sql + seeds holiday calendar
+#   - border-wait-times-cbp-pipeline  cron: hourly CBP ingestion into wait_times
+#
+# After the first sync, open border-wait-times-db-init in the dashboard and click
+# "Run" once so the schema and holiday calendar exist before the API serves traffic.
+
+databases:
+  - name: border-wait-times-db
+    plan: free
+    region: oregon
+    databaseName: border_wait_times
+    user: border_wait_times
+
+services:
+  # ---------------------------------------------------------------------------
+  # FastAPI prediction API
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: border-wait-times-api
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r backend/api/requirements.txt
+    startCommand: cd backend/api && uvicorn api_layer:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"  # xgboost 3.4.1 (the model's version) needs Python >= 3.12
+      - key: DB_HOST
+        fromDatabase: { name: border-wait-times-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: border-wait-times-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: border-wait-times-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: border-wait-times-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: border-wait-times-db, property: password }
+
+  # ---------------------------------------------------------------------------
+  # Schema + holiday-calendar seed (idempotent). Runs daily; "Run" it manually
+  # once right after the first blueprint sync.
+  # ---------------------------------------------------------------------------
+  - type: cron
+    name: border-wait-times-db-init
+    runtime: python
+    plan: starter
+    region: oregon
+    schedule: "30 5 * * *"
+    buildCommand: pip install -r backend/holiday_pipeline/requirements.txt
+    startCommand: mkdir -p logs && python backend/database/init_db.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"  # xgboost 3.4.1 (the model's version) needs Python >= 3.12
+      - key: DB_HOST
+        fromDatabase: { name: border-wait-times-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: border-wait-times-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: border-wait-times-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: border-wait-times-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: border-wait-times-db, property: password }
+
+  # ---------------------------------------------------------------------------
+  # Hourly CBP ingestion -> wait_times (creates its own tables if missing)
+  # ---------------------------------------------------------------------------
+  - type: cron
+    name: border-wait-times-cbp-pipeline
+    runtime: python
+    plan: starter
+    region: oregon
+    schedule: "0 * * * *"
+    buildCommand: pip install -r backend/cbp-pipeline/requirements.txt
+    startCommand: mkdir -p logs && python backend/cbp-pipeline/cbp_data_pipeline.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"  # xgboost 3.4.1 (the model's version) needs Python >= 3.12
+      - key: DB_HOST
+        fromDatabase: { name: border-wait-times-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: border-wait-times-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: border-wait-times-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: border-wait-times-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: border-wait-times-db, property: password }
+
+  # ---------------------------------------------------------------------------
+  # Next.js frontend. It calls the API through its own /api/* routes, using API_URL.
+  # Free Render services can't receive private-network traffic, so API_URL must be
+  # the API's PUBLIC url (e.g. https://border-wait-times-api.onrender.com) — Render
+  # asks for it when the blueprint is created (sync: false).
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: border-wait-times-frontend
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: API_URL
+        sync: false

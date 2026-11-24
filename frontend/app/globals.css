@@ -1,42 +1,112 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Design tokens. Every page uses these semantic names (bg-surface, text-ink,
+   border-line, text-accent ...) so light/dark switch in one place.
+   --------------------------------------------------------------------------- */
 :root {
-  /* https://coolors.co/d9ed92-b5e48c-99d98c-76c893-52b69a-34a0a4-168aad-1a759f-1e6091-184e77 */
-  --almond-cream: rgb(142, 173, 196);
-  --wheat: rgb(179, 217, 236);
-  --pale-oak: rgb(123, 159, 172);
-  --tan: rgb(85, 126, 176);
-  --blackberry-cream: #184e77ff;
-  --white: #ffffff;
-  --blue: rgb(178, 207, 229);
-  --black : #000000;
-  --maroon: rgb(128, 0, 0);
+  --surface: #ffffff;          /* cards, sidebar */
+  --surface-muted: #f6f7f9;    /* inset panels, inputs, table stripes */
+  --line: #e4e7ec;             /* borders, dividers */
+  --ink: #101828;              /* primary text */
+  --ink-2: #475467;            /* secondary text */
+  --ink-3: #667085;            /* muted text, captions */
+  --accent: #184e77;           /* brand navy: buttons, active nav, links */
+  --accent-soft: #e8f0f7;      /* active nav background, chips */
+  --on-accent: #ffffff;
+  --wash: rgba(246, 247, 249, 0.9); /* overlay on the background photo */
 
-  --background: var(--almond-cream);
-  --foreground: var(--blackberry-cream);
+  --background: var(--surface-muted);
+  --foreground: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #16191e;
+    --surface-muted: #0f1115;
+    --line: #2a2f37;
+    --ink: #f2f4f7;
+    --ink-2: #c0c6d0;
+    --ink-3: #98a2b3;
+    --accent: #7fb2de;
+    --accent-soft: #1b2a3a;
+    --on-accent: #0f1115;
+    --wash: rgba(15, 17, 21, 0.9);
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-wheat: var(--wheat);
-  --color-tan: var(--tan);
-  --color-blackberry-cream: var(--blackberry-cream);
-  --color-pale-oak: var(--pale-oak);
-  --color-almond-cream: var(--almond-cream);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
   --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--blackberry-cream);
-    --foreground: var(--almond-cream);
-  }
+body {
+  background: var(--surface-muted);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-body {
-  background: transparent;
-  color: var(--foreground);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+/* ---------------------------------------------------------------------------
+   Shared building blocks.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .page {
+    @apply min-h-screen px-4 py-8 sm:px-8 sm:py-10;
+  }
+  .page-header {
+    @apply mb-8;
+  }
+  .page-title {
+    @apply text-2xl font-semibold tracking-tight text-ink sm:text-3xl;
+  }
+  .page-subtitle {
+    @apply mt-1.5 text-sm text-ink-2;
+  }
+  .section-title {
+    @apply text-lg font-semibold tracking-tight text-ink;
+  }
+  .card {
+    @apply rounded-xl border border-line bg-surface shadow-[0_1px_2px_rgba(16,24,40,0.04)];
+  }
+  .card-pad {
+    @apply p-5;
+  }
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-wider text-ink-3;
+  }
+  .field-label {
+    @apply block text-sm font-medium text-ink;
+  }
+  .field {
+    @apply mt-1.5 block w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink
+      placeholder:text-ink-3 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-accent text-on-accent hover:opacity-90;
+  }
+  .btn-secondary {
+    @apply border border-line bg-surface text-ink hover:bg-surface-muted;
+  }
+  .chip {
+    @apply rounded-full border border-line bg-surface px-3 py-1.5 text-sm text-ink-2 transition-colors
+      hover:border-accent hover:text-accent;
+  }
+  .prose-body {
+    @apply text-sm leading-relaxed text-ink-2;
+  }
 }
