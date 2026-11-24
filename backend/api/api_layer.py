@@ -1,3 +1,4 @@
+import csv
 import os
 import sys
 import traceback
@@ -27,6 +28,7 @@ from Economic_Ratios.getting_ratios import (  # noqa: E402
     DISCRETIONARY_RATIO,
     ELASTICITY_RATE,
     FRICTION_THRESHOLD_MINS,
+    HOURS_PER_DAY,
     OPTIMAL_WAIT_MINS,
     VALUE_OF_TIME_USD_PER_HOUR,
     baseline_daily_trucks,
@@ -67,27 +69,100 @@ NON_OPERATIONAL_STATUSES = {"Lanes Closed", "N/A"}
 MAX_REPORTS_PER_IP = 5
 
 
-# ---------- helpers ----------
-def _get_day_context(day: date_cls) -> dict:
-    default = {
-        "us_is_federal_holiday": False, "mx_is_official_holiday": False,
-        "mx_is_bridge_day": False, "us_is_summer_vacation": False,
-        "mx_is_summer_vacation": False,
-    }
+# ---------- holiday calendar ----------
+# The model was trained with es_feriado = 1 on US federal holidays, Mexican official holidays
+# AND every day of El Paso ISD summer vacation (all of July plus Aug 1-3, 2026 are flagged in
+# the training data; Mexican summer vacation is not). Predictions must use the same definition.
+HOLIDAY_FIELDS = {
+    # holidays-table column -> holidays.csv column
+    "us_is_federal_holiday": "US - Es feriado federal",
+    "us_federal_holiday_name": "US - Nombre feriado federal",
+    "us_is_school_break": "US - Es receso escolar",
+    "us_school_break_name": "US - Nombre receso escolar",
+    "us_is_summer_vacation": "US - Es vacaciones_verano",
+    "mx_is_official_holiday": "MX - Es feriado oficial",
+    "mx_official_holiday_name": "MX - Nombre feriado oficial",
+    "mx_is_bridge_day": "MX - Es puente",
+    "mx_bridge_day_name": "MX - Nombre puente",
+    "mx_is_summer_vacation": "MX - Es vacaciones_verano",
+}
+HOLIDAYS_CSV_CANDIDATES = [
+    os.path.join(CURRENT_DIR, "holidays.csv"),                                # Docker: /app/holidays.csv
+    os.path.join(CURRENT_DIR, "..", "holiday_pipeline", "holidays.csv"),      # repo / Render
+]
+CALENDAR_CACHE_SECONDS = 3600
+_calendar_cache: dict = {"loaded_at": 0.0, "days": {}, "source": None}
+
+
+def _model_holiday(ctx: dict) -> bool:
+    """es_feriado exactly as the model was trained."""
+    return bool(ctx["us_is_federal_holiday"] or ctx["mx_is_official_holiday"] or ctx["us_is_summer_vacation"])
+
+
+def _normalize_day(raw: dict) -> dict:
+    ctx = {}
+    for key in HOLIDAY_FIELDS:
+        value = raw.get(key)
+        if key.endswith("_name"):
+            ctx[key] = (value or "").strip() or None
+        elif isinstance(value, str):
+            ctx[key] = value.strip().upper() == "TRUE"
+        else:
+            ctx[key] = bool(value)
+    ctx["is_holiday"] = ctx["us_is_federal_holiday"] or ctx["mx_is_official_holiday"]
+    ctx["es_feriado"] = _model_holiday(ctx)
+    return ctx
+
+
+def _load_calendar_from_db() -> dict:
+    with psycopg2.connect(**DB_CONFIG, connect_timeout=3) as conn:
+        with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
+            cursor.execute(f"SELECT date_value, {', '.join(HOLIDAY_FIELDS)} FROM holidays")
+            return {row["date_value"]: _normalize_day(row) for row in cursor.fetchall()}
+
+
+def _load_calendar_from_csv() -> dict:
+    path = next((p for p in HOLIDAYS_CSV_CANDIDATES if os.path.exists(p)), None)
+    if path is None:
+        return {}
+    days = {}
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            if not (row.get("Dia (dia del anio)") or "").strip().isdigit():
+                continue  # source / note rows at the bottom of the file
+            raw = {key: row.get(csv_col, "") for key, csv_col in HOLIDAY_FIELDS.items()}
+            days[date_cls.fromisoformat(row["Fecha"].strip())] = _normalize_day(raw)
+    return days
+
+
+def _holiday_calendar() -> dict:
+    """{date: day context} from the holidays table, falling back to holidays.csv. Cached 1h."""
+    now = datetime.now().timestamp()
+    if _calendar_cache["days"] and now - _calendar_cache["loaded_at"] < CALENDAR_CACHE_SECONDS:
+        return _calendar_cache["days"]
+    days, source = {}, None
     try:
-        with psycopg2.connect(**DB_CONFIG, connect_timeout=3) as conn:
-            with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
-                cursor.execute(
-                    """SELECT us_is_federal_holiday, mx_is_official_holiday, mx_is_bridge_day,
-                              us_is_summer_vacation, mx_is_summer_vacation
-                       FROM holidays WHERE date_value = %s""", (day,))
-                row = cursor.fetchone()
-        context = {k: bool(v) for k, v in row.items()} if row else dict(default)
+        days, source = _load_calendar_from_db(), "database"
     except Exception as e:
-        print(f"Holiday lookup failed, using defaults: {e}")
-        context = dict(default)
-    context["is_holiday"] = context["us_is_federal_holiday"] or context["mx_is_official_holiday"]
-    return context
+        print(f"Holiday table unavailable ({e}); trying holidays.csv")
+    if not days:
+        try:
+            days, source = _load_calendar_from_csv(), "holidays.csv"
+        except Exception as e:
+            print(f"holidays.csv unavailable: {e}")
+    if days:
+        _calendar_cache.update(loaded_at=now, days=days, source=source)
+    return days
+
+
+def _get_day_context(day: date_cls) -> dict:
+    ctx = _holiday_calendar().get(day)
+    if ctx is None:
+        # Date not in the calendar: no holiday information -> treated as a normal day.
+        ctx = _normalize_day({})
+        ctx["calendar_covers_date"] = False
+        return ctx
+    return {**ctx, "calendar_covers_date": True}
 
 
 def _semestre_activo(month: int) -> int:
@@ -145,8 +220,12 @@ def _build_features(day: date_cls, hour: int, es_ready_lane: int, daily_volume: 
     if temp_f is None or precip_in is None:
         w = get_weather(day, hour)
         default_t, default_p = w if w else (75.0, 0.0)
+        day_context["weather_source"] = (
+            "Open-Meteo (observed or forecast)" if w else "default 75°F, no rain (no forecast for this date)")
         temp_f = default_t if temp_f is None else temp_f
         precip_in = default_p if precip_in is None else precip_in
+    else:
+        day_context["weather_source"] = "entered manually"
     features = {
         "month": day.month,
         "hour": hour,
@@ -156,7 +235,7 @@ def _build_features(day: date_cls, hour: int, es_ready_lane: int, daily_volume: 
         "dia_semana": dia_semana,
         "es_ready_lane": es_ready_lane,
         "semestre_activo": _semestre_activo(day.month),
-        "es_feriado": int(day_context["is_holiday"]),
+        "es_feriado": int(day_context["es_feriado"]),
         "baseline_daily_volume_vehiculos_BOTA": daily_volume,
         **_weather_features(temp_f, precip_in),
     }
@@ -343,6 +422,20 @@ def predict_wait_time(
         # Scenario: every BOTA passenger vehicle in that hour faces the predicted wait.
         result["economic_impact"] = calculate_delay_cost(
             result["predicted_wait_minutes"], baseline_daily_volume_vehiculos_bota)
+        # Everything the Playground needs to show how the numbers were produced.
+        result["assumptions"] = {
+            "model": "XGBoost regressor trained on synthetic BOTA passenger-lane wait times",
+            "holiday_definition": "US federal holiday, Mexican official holiday, or El Paso ISD summer vacation",
+            "daily_volume": baseline_daily_volume_vehiculos_bota,
+            "hours_per_day": HOURS_PER_DAY,
+            "delay_threshold_minutes": OPTIMAL_WAIT_MINS,
+            "value_of_time_usd_per_hour": VALUE_OF_TIME_USD_PER_HOUR,
+            "avg_vehicle_occupancy": AVG_VEHICLE_OCCUPANCY,
+            "friction_threshold_minutes": FRICTION_THRESHOLD_MINS,
+            "abandonment_rate_per_10_min": ELASTICITY_RATE,
+            "discretionary_ratio": DISCRETIONARY_RATIO,
+            "avg_retail_spend_usd": AVG_RETAIL_SPEND,
+        }
         return result
     except Exception as e:
         traceback.print_exc()
@@ -471,17 +564,8 @@ def _bota_lanes_open_profile() -> tuple:
 
 
 def _holiday_flags(year: int) -> dict:
-    try:
-        with psycopg2.connect(**DB_CONFIG, connect_timeout=3) as conn:
-            with conn.cursor() as cursor:
-                cursor.execute("""
-                    SELECT date_value, (us_is_federal_holiday OR mx_is_official_holiday)
-                    FROM holidays WHERE EXTRACT(YEAR FROM date_value) = %s
-                """, (year,))
-                return {d: bool(h) for d, h in cursor.fetchall()}
-    except Exception as e:
-        print(f"Holiday range lookup failed: {e}")
-        return {}
+    """{date: es_feriado} for every calendar day of `year` (model definition)."""
+    return {d: ctx["es_feriado"] for d, ctx in _holiday_calendar().items() if d.year == year}
 
 
 @app.get("/economic-impact/annual")
@@ -504,8 +588,16 @@ def get_annual_economic_impact(year: int = Query(None, ge=2020, le=2100)):
         start, end = date_cls(year, 1, 1), date_cls(year, 12, 31)
         archive_end = min(end, date_cls.today() - timedelta(days=6))
         weather = _fetch_weather_range(start, archive_end)
-        # Days without observed weather (future / archive lag) use the same day of the previous year.
-        prev = _fetch_weather_range(date_cls(year - 1, 1, 1), date_cls(year - 1, 12, 31))
+        # Days without observed weather (future / archive lag) use the same day of the previous
+        # year. The archive rejects ranges that reach past its latest day, so clamp the request.
+        latest_archived = date_cls.today() - timedelta(days=6)
+        prev = _fetch_weather_range(date_cls(year - 1, 1, 1), min(date_cls(year - 1, 12, 31), latest_archived))
+        # Last resort: average of everything fetched for the same month and hour.
+        climatology: dict = {}
+        for (day_, hr_), (t_, p_) in {**prev, **weather}.items():
+            climatology.setdefault((day_.month, hr_), []).append((t_, p_))
+        climatology = {k: (sum(t for t, _ in v) / len(v), sum(p for _, p in v) / len(v))
+                       for k, v in climatology.items()}
         holidays = _holiday_flags(year)
 
         hours = pd.date_range(f"{year}-01-01 00:00", f"{year}-12-31 23:00", freq="h")
@@ -516,7 +608,8 @@ def get_annual_economic_impact(year: int = Query(None, ge=2020, le=2100)):
                 prev_key = (d.replace(year=year - 1), hr)
             except ValueError:  # Feb 29
                 prev_key = (date_cls(year - 1, 2, 28), hr)
-            temp_f, precip_in = weather.get((d, hr)) or prev.get(prev_key) or (75.0, 0.0)
+            temp_f, precip_in = (weather.get((d, hr)) or prev.get(prev_key)
+                                 or climatology.get((d.month, hr)) or (75.0, 0.0))
             dia_semana = d.weekday()
             base = {
                 "month": d.month, "hour": hr,
@@ -596,6 +689,9 @@ def get_annual_economic_impact(year: int = Query(None, ge=2020, le=2100)):
                 "lanes_open_source": "cbp_observed" if n_obs else "default",
                 "lanes_open_observations": n_obs,
                 "weather_observed_through": archive_end.isoformat() if weather else None,
+                "holiday_calendar_source": _calendar_cache["source"],
+                "holiday_days": sum(holidays.values()),
+                "holiday_definition": "US federal holiday, Mexican official holiday, or El Paso ISD summer vacation",
             },
         }
         _annual_cache[cache_key] = (datetime.now().timestamp(), result)

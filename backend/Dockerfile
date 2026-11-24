@@ -17,6 +17,7 @@ RUN pip install --upgrade pip && \
 
 COPY api/api_layer.py .
 COPY Economic_Ratios/ ./Economic_Ratios/
+COPY holiday_pipeline/holidays.csv .
 COPY ml/modelo_bota_waittimes_passengerlanes_sintetico_rf2.joblib .
 
 EXPOSE 8000

@@ -48,6 +48,8 @@ interface AnnualImpact {
     lanes_open_source: 'cbp_observed' | 'default'
     lanes_open_observations: number
     weather_observed_through: string | null
+    holiday_days: number
+    holiday_definition: string
   }
 }
 
@@ -473,7 +475,7 @@ export default function ImpactPage() {
         a.lanes_open_source === 'cbp_observed'
           ? `average of ${a.lanes_open_observations} CBP readings by hour of day (unobserved hours use the lane’s overall average)`
           : 'default profile until the pipeline collects CBP readings'
-      }. Wait times are model predictions, not observed history; weather observed through ${
+      }. Holidays: ${a.holiday_days} days of the year count as holidays (${a.holiday_definition}). Wait times are model predictions, not observed history; weather observed through ${
         a.weather_observed_through ?? 'n/a'
       }, later days use the same day of the previous year.`
     : ''

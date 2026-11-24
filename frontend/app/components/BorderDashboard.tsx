@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import { formatUsd, PORTS, WAIT_TAG, waitLevel, WaitTime } from '../lib/waitTimes'
+import { PORTS, WAIT_TAG, waitLevel, WaitTime } from '../lib/waitTimes'
 
 // ACTION: BorderMap uses `window`/`document` (Leaflet), so it's loaded client-only
 // (`ssr: false`) to avoid breaking server rendering. `loading` is what shows
@@ -15,20 +15,6 @@ const BorderMap = dynamic(() => import('./BorderMap'), {
     </div>
   ),
 })
-
-// LAYOUT: one cost-of-delay summary card per loss type shown above the lane cards.
-const IMPACT_CARDS = [
-  {
-    category: 'passenger',
-    title: 'Cost of delay · passenger vehicles',
-    subtitle: 'Travelers’ time + lost retail spending',
-  },
-  {
-    category: 'commercial',
-    title: 'Cost of delay on commercial vehicles',
-    subtitle: 'Productivity, cargo in transit + late deliveries',
-  },
-] as const
 
 interface BorderDashboardProps {
   data: WaitTime[]
@@ -49,19 +35,6 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
     acc[row.crossing_type].push(row)
     return acc
   }, {})
-  // ACTION: port-wide cost of the current CBP delays, one summary per loss type
-  // (the API splits each port's volume so lane losses add up to the port total).
-  const impactSummaries = IMPACT_CARDS.map((card) => {
-    const rows = portRows.filter((row) => row.economic_impact?.delay_category === card.category)
-    return {
-      ...card,
-      openLanes: rows.length,
-      lossPerHour: rows.reduce((sum, row) => sum + (row.economic_impact?.total_loss_usd ?? 0), 0),
-      lanesInDelay: rows.filter((row) => row.economic_impact?.is_delay).length,
-      threshold: rows[0]?.economic_impact?.delay_threshold_minutes,
-    }
-  }).filter((s) => s.openLanes > 0)
-
   return (
     // LAYOUT: `flex-col` on mobile (port list stacks above the map/detail area),
     // `sm:flex-row` on larger screens (side-by-side).
@@ -122,29 +95,6 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
               </button>
             </div>
 
-            {impactSummaries.length > 0 && (
-              <div className="mb-4 grid gap-2 grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
-                {impactSummaries.map((s) => (
-                  <div
-                    key={s.category}
-                    className="rounded-lg border border-line bg-surface-muted px-4 py-3"
-                  >
-                    <p className="eyebrow">{s.title}</p>
-                    <p className="mt-1 text-2xl font-mono text-ink">
-                      {formatUsd(s.lossPerHour)}
-                      <span className="text-sm font-sans text-ink-3"> /hr</span>
-                    </p>
-                    <p className="text-xs text-ink-2">{s.subtitle}</p>
-                    <p className="text-xs text-ink-3">
-                      {s.lanesInDelay > 0
-                        ? `${s.lanesInDelay} of ${s.openLanes} open lanes over the ${s.threshold}-min threshold`
-                        : `No lanes over the ${s.threshold}-min threshold`}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-
             {portRows.length === 0 && (
               <p className="text-sm text-ink-3">No wait time data available right now.</p>
             )}
@@ -187,11 +137,6 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
                             <span className="text-sm font-sans text-ink-3"> min</span>
                           </p>
                           <p className={`text-xs font-medium ${tag.text}`}>{tag.label}</p>
-                          {row.economic_impact?.is_delay && (
-                            <p className="text-xs font-mono text-ink-2">
-                              {formatUsd(row.economic_impact.total_loss_usd)}/hr
-                            </p>
-                          )}
                         </div>
                       </div>
                     )
