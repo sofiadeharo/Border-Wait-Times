@@ -72,7 +72,15 @@ MAX_REPORTS_PER_IP = 5
 # ---------- holiday calendar ----------
 # The model was trained with es_feriado = 1 on US federal holidays, Mexican official holidays
 # AND every day of El Paso ISD summer vacation (all of July plus Aug 1-3, 2026 are flagged in
-# the training data; Mexican summer vacation is not). Predictions must use the same definition.
+# the training data; Mexican summer vacation is not).
+# Predictions ALSO flag the day before and the day after each US federal / Mexican official
+# holiday (travel around the holiday). Those adjacent days were NOT flagged in the training
+# data, so the model applies its learned holiday effect to them; retrain with the same rule to
+# make training and prediction match again.
+HOLIDAY_DEFINITION = (
+    "US federal holiday, Mexican official holiday, the day before or after either, "
+    "or El Paso ISD summer vacation"
+)
 HOLIDAY_FIELDS = {
     # holidays-table column -> holidays.csv column
     "us_is_federal_holiday": "US - Es feriado federal",
@@ -110,8 +118,27 @@ def _normalize_day(raw: dict) -> dict:
         else:
             ctx[key] = bool(value)
     ctx["is_holiday"] = ctx["us_is_federal_holiday"] or ctx["mx_is_official_holiday"]
+    ctx["holiday_adjacent_name"] = None  # e.g. "Day before Thanksgiving Day"; set by _mark_adjacent_days
     ctx["es_feriado"] = _model_holiday(ctx)
     return ctx
+
+
+def _mark_adjacent_days(days: dict) -> dict:
+    """Flag the day before and the day after every US federal / Mexican official holiday as
+    es_feriado, naming them after the holiday. Summer vacation is a block, not a holiday, so it
+    is not extended. A day that is itself a holiday keeps its own name."""
+    for day, ctx in sorted(days.items()):
+        if not ctx["is_holiday"]:
+            continue
+        name = ctx["us_federal_holiday_name"] or ctx["mx_official_holiday_name"] or "a holiday"
+        for offset, label in ((-1, "Day before"), (1, "Day after")):
+            neighbor = days.get(day + timedelta(days=offset))
+            if neighbor is None or neighbor["is_holiday"]:
+                continue
+            neighbor["es_feriado"] = True
+            # A day between two holidays keeps the first name it got.
+            neighbor["holiday_adjacent_name"] = neighbor["holiday_adjacent_name"] or f"{label} {name}"
+    return days
 
 
 def _load_calendar_from_db() -> dict:
@@ -151,6 +178,7 @@ def _holiday_calendar() -> dict:
         except Exception as e:
             print(f"holidays.csv unavailable: {e}")
     if days:
+        days = _mark_adjacent_days(days)
         _calendar_cache.update(loaded_at=now, days=days, source=source)
     return days
 
@@ -425,7 +453,7 @@ def predict_wait_time(
         # Everything the Playground needs to show how the numbers were produced.
         result["assumptions"] = {
             "model": "XGBoost regressor trained on synthetic BOTA passenger-lane wait times",
-            "holiday_definition": "US federal holiday, Mexican official holiday, or El Paso ISD summer vacation",
+            "holiday_definition": HOLIDAY_DEFINITION,
             "daily_volume": baseline_daily_volume_vehiculos_bota,
             "hours_per_day": HOURS_PER_DAY,
             "delay_threshold_minutes": OPTIMAL_WAIT_MINS,
@@ -691,7 +719,7 @@ def get_annual_economic_impact(year: int = Query(None, ge=2020, le=2100)):
                 "weather_observed_through": archive_end.isoformat() if weather else None,
                 "holiday_calendar_source": _calendar_cache["source"],
                 "holiday_days": sum(holidays.values()),
-                "holiday_definition": "US federal holiday, Mexican official holiday, or El Paso ISD summer vacation",
+                "holiday_definition": HOLIDAY_DEFINITION,
             },
         }
         _annual_cache[cache_key] = (datetime.now().timestamp(), result)

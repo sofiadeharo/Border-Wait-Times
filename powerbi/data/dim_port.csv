@@ -1,0 +1,4 @@
+port_id,port_name,city,free_flow_min,cargo_value_per_truck_usd,jit_share
+240201,Bridge of the Americas,El Paso,15,120000.0,0.55
+240203,Ysleta–Zaragoza,El Paso,20,165000.0,0.7
+240204,Tornillo–Guadalupe,El Paso,12,95000.0,0.35

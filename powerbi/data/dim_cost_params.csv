@@ -1,0 +1,6 @@
+param,value
+truck_hourly_cost_usd,95.0
+carrying_rate_annual,0.2
+hours_per_year,8760.0
+reliability_threshold_min,75.0
+line_stoppage_cost_per_truck,2500.0

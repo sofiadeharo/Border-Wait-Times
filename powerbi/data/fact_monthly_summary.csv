@@ -1,0 +1,526 @@
+scenario_id,scenario_name,port_name,year,month,total_cost,direct_cost,inventory_cost,reliability_cost,cargo_value_at_risk
+baseline,Current wait times,Bridge of the Americas,2023,9,121622.01,118212.96,3409.2000000000003,0.0,559265355.0
+baseline,Current wait times,Bridge of the Americas,2023,10,144690.63999999998,140635.1,4055.84,0.0,657379807.0
+baseline,Current wait times,Bridge of the Americas,2023,11,241984.2,235201.27,6783.01,0.0,1092715806.0
+baseline,Current wait times,Bridge of the Americas,2023,12,212898.76,206930.52,5968.11,0.0,967612806.0
+baseline,Current wait times,Bridge of the Americas,2024,1,254534.27,247399.93,7134.91,0.0,1134341999.0
+baseline,Current wait times,Bridge of the Americas,2024,2,280473.5,272611.34,7861.95,0.0,1262810982.0
+baseline,Current wait times,Bridge of the Americas,2024,3,250283.17,243267.42,7015.76,0.0,1153303816.0
+baseline,Current wait times,Bridge of the Americas,2024,4,282017.97,274112.27,7905.13,0.0,1288953615.0
+baseline,Current wait times,Bridge of the Americas,2024,5,261027.39,253710.73,7317.21,0.0,1196837381.0
+baseline,Current wait times,Bridge of the Americas,2024,6,268163.69,260647.02,7517.07,0.0,1226233850.0
+baseline,Current wait times,Bridge of the Americas,2024,7,295843.54,287550.81,8292.75,0.0,1326877218.0
+baseline,Current wait times,Bridge of the Americas,2024,8,305279.1,296721.78,8557.07,0.0,1405080612.0
+baseline,Current wait times,Bridge of the Americas,2024,9,266484.6,259014.95,7469.81,0.0,1221521408.0
+baseline,Current wait times,Bridge of the Americas,2024,10,306121.46,297539.9,8580.54,0.0,1401041436.0
+baseline,Current wait times,Bridge of the Americas,2024,11,259876.28,252592.05,7284.4,0.0,1193247013.0
+baseline,Current wait times,Bridge of the Americas,2024,12,262359.0,255004.74,7354.21,0.0,1206711007.0
+baseline,Current wait times,Bridge of the Americas,2025,1,313593.58,304803.42,8790.52,0.0,1430101189.0
+baseline,Current wait times,Bridge of the Americas,2025,2,295387.15,287107.17,8279.89,0.0,1360200600.0
+baseline,Current wait times,Bridge of the Americas,2025,3,311719.6,302981.5,8737.82,0.0,1445023830.0
+baseline,Current wait times,Bridge of the Americas,2025,4,319507.37,310551.53,8956.08,0.0,1463873430.0
+baseline,Current wait times,Bridge of the Americas,2025,5,353871.65,343951.87,9919.380000000001,0.0,1632285552.0
+baseline,Current wait times,Bridge of the Americas,2025,6,395199.52,384121.91,11078.0,0.0,1642720191.0
+baseline,Current wait times,Bridge of the Americas,2025,7,409284.98,397812.4,11472.78,0.0,1756939848.0
+baseline,Current wait times,Bridge of the Americas,2025,8,345917.79,336221.44,9696.22,0.0,1579327220.0
+baseline,Current wait times,Bridge of the Americas,2025,9,365284.84,355045.25,10239.06,0.0,1584376211.0
+baseline,Current wait times,Bridge of the Americas,2025,10,401112.11,389868.16,11243.39,0.0,1754471414.0
+baseline,Current wait times,Bridge of the Americas,2025,11,291793.47000000003,283614.38,8179.58,0.0,1338882583.0
+baseline,Current wait times,Bridge of the Americas,2025,12,316342.98,307474.83,8867.21,0.0,1441208998.0
+baseline,Current wait times,Bridge of the Americas,2026,1,351994.95,342128.18,9866.88,0.0,1625665832.0
+baseline,Current wait times,Bridge of the Americas,2026,2,325902.72,316767.52,9135.04,0.0,1557223816.0
+baseline,Current wait times,Bridge of the Americas,2026,3,381253.47000000003,370566.21,10687.16,0.0,1784204407.0
+baseline,Current wait times,Bridge of the Americas,2026,4,382123.82,371412.74,10711.22,0.0,1733489987.0
+baseline,Current wait times,Bridge of the Americas,2026,5,346379.95,336670.2,9709.55,0.0,1629256222.0
+baseline,Current wait times,Bridge of the Americas,2026,6,388832.67,377933.34,10899.460000000001,0.0,1781960370.0
+baseline,Current wait times,Bridge of the Americas,2026,7,403971.42,392647.96,11323.65,0.0,1805634596.0
+baseline,Current wait times,Tornillo–Guadalupe,2023,9,45479.06,44464.11,1015.2,0.0,236990851.0
+baseline,Current wait times,Tornillo–Guadalupe,2023,10,59103.43,57784.6,1319.29,0.0,304047936.0
+baseline,Current wait times,Tornillo–Guadalupe,2023,11,7884.46,7708.65,176.14000000000001,0.0,40237716.0
+baseline,Current wait times,Tornillo–Guadalupe,2023,12,8161.64,7979.97,182.28,0.0,41836534.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,1,9445.55,9234.62,210.84,0.0,47343769.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,2,12453.19,12175.34,277.6,0.0,63243473.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,3,10943.12,10699.0,244.1,0.0,57203251.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,4,40513.4,39608.82,904.81,0.0,210337610.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,5,62327.83,60936.67,1391.5,0.0,325277143.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,6,19275.83,18845.260000000002,430.52,0.0,99572787.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,7,30732.79,30046.81,685.78,0.0,155443738.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,8,37945.91,37098.91,847.09,0.0,198346201.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,9,38323.94,37468.57,855.4,0.0,199501003.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,10,35338.22,34549.72,788.77,0.0,183956593.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,11,31761.25,31052.07,708.91,0.0,165303318.0
+baseline,Current wait times,Tornillo–Guadalupe,2024,12,27809.26,27188.14,620.41,0.0,145584203.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,1,33721.06,32968.42,752.5,0.0,174629932.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,2,44502.92,43509.62,993.7,0.0,233165644.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,3,37753.54,36910.54,842.71,0.0,199056840.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,4,33654.26,32903.22,751.42,0.0,175340594.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,5,68219.13,66696.49,1523.03,0.0,357698251.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,6,65832.43,64362.85,1469.81,0.0,298896127.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,7,65123.49,63669.72,1453.76,0.0,309732762.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,8,54561.95,53344.27,1217.78,0.0,281486443.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,9,74086.15,72432.41,1653.93,0.0,357254143.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,10,70593.6,69017.55,1575.59,0.0,344641034.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,11,50102.23,48983.74,1118.25,0.0,260079625.0
+baseline,Current wait times,Tornillo–Guadalupe,2025,12,51370.87,50224.06,1146.76,0.0,265675598.0
+baseline,Current wait times,Tornillo–Guadalupe,2026,1,45156.770000000004,44148.96,1008.0,0.0,236985098.0
+baseline,Current wait times,Tornillo–Guadalupe,2026,2,40711.1,39802.21,908.91,0.0,224727228.0
+baseline,Current wait times,Tornillo–Guadalupe,2026,3,51049.44,49910.22,1139.48,0.0,273758638.0
+baseline,Current wait times,Tornillo–Guadalupe,2026,4,47016.15,45966.59,1049.6,0.0,241515158.0
+baseline,Current wait times,Tornillo–Guadalupe,2026,5,50738.57,49606.06,1132.21,0.0,273136904.0
+baseline,Current wait times,Tornillo–Guadalupe,2026,6,50588.2,49458.95,1129.45,0.0,263632595.0
+baseline,Current wait times,Tornillo–Guadalupe,2026,7,49419.5,48316.56,1103.08,0.0,248710016.0
+baseline,Current wait times,Ysleta–Zaragoza,2023,9,1138223.59,1094810.26,43413.42,0.0,5489786353.0
+baseline,Current wait times,Ysleta–Zaragoza,2023,10,1203385.97,1157487.01,45898.78,0.0,5737178675.0
+baseline,Current wait times,Ysleta–Zaragoza,2023,11,1762659.33,1695428.76,67230.42,0.0,8360779329.0
+baseline,Current wait times,Ysleta–Zaragoza,2023,12,1531507.47,1473093.26,58413.95,0.0,7319731629.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,1,1808738.52,1739750.63,68988.01,0.0,8489290454.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,2,1726028.02,1660194.87,65833.42,0.0,8171792433.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,3,1728145.5,1662231.49,65914.0,0.0,8347820265.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,4,1769892.53,1702386.27,67506.51,0.0,8473554349.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,5,1714303.57,1648917.81,65385.98,0.0,8224863068.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,6,1654330.39,1591231.74,63098.74,0.0,7947939433.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,7,1947904.46,1873608.99,74296.14,0.0,9187693267.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,8,1976185.73,1900811.07,75374.67,0.0,9528949688.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,9,1882711.19,1810901.78,71809.51,0.0,9041286398.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,10,1991516.55,1915557.06,75959.34,0.0,9541137387.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,11,1787324.8699999999,1719153.45,68171.13,0.0,8606539441.0
+baseline,Current wait times,Ysleta–Zaragoza,2024,12,1641473.73,1578865.44,62608.33,0.0,7900114180.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,1,1785581.94,1717477.11,68105.03,0.0,8531253217.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,2,1598560.85,1537589.26,60971.55,0.0,7704030676.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,3,1785364.18,1717267.89,68096.18000000001,0.0,8663621141.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,4,1739174.48,1672839.82,66334.71,0.0,8342112106.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,5,1610214.85,1548798.8800000001,61415.99,0.0,7777311312.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,6,1828487.11,1758745.93,69741.37,0.0,8137080588.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,7,1929409.79,1855819.36,73590.73,0.0,8795834826.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,8,1736709.91,1670469.21,66240.63,0.0,8329615819.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,9,1857547.46,1786697.93,70849.51,0.0,8539892652.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,10,2033975.09,1956396.17,77578.92,0.0,9409386532.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,11,1457944.1199999999,1402336.24,55608.02,0.0,7023060808.0
+baseline,Current wait times,Ysleta–Zaragoza,2025,12,1623268.96,1561354.85,61913.91,0.0,7749541803.0
+baseline,Current wait times,Ysleta–Zaragoza,2026,1,1721306.11,1655653.16,65652.76,0.0,8321902060.0
+baseline,Current wait times,Ysleta–Zaragoza,2026,2,1681717.01,1617574.03,64143.31,0.0,8337483820.0
+baseline,Current wait times,Ysleta–Zaragoza,2026,3,1784246.96,1716193.09,68053.58,0.0,8702189924.0
+baseline,Current wait times,Ysleta–Zaragoza,2026,4,1728739.2,1662802.3,65936.64,0.0,8229028482.0
+baseline,Current wait times,Ysleta–Zaragoza,2026,5,1676544.69,1612599.22,63945.67,0.0,8227485742.0
+baseline,Current wait times,Ysleta–Zaragoza,2026,6,1823775.62,1754214.2,69561.46,0.0,8749706627.0
+baseline,Current wait times,Ysleta–Zaragoza,2026,7,1878923.3,1807258.47,71665.19,0.0,8839186124.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2023,9,2320742.0,668410.4400000001,19276.48,1633055.24,559265355.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2023,10,2748062.9,788114.48,22728.7,1937220.15,657379807.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2023,11,4581560.51,1311677.99,37827.7,3232054.9699999997,1092715806.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2023,12,4035548.35,1158907.87,33422.09,2843218.62,967612806.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,1,4784686.91,1365104.8699999999,39368.92,3380213.43,1134341999.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,2,5299557.03,1516440.11,43733.09,3739383.61,1262810982.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,3,4781663.75,1377881.76,39737.2,3364045.09,1153303816.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,4,5376828.91,1543908.64,44525.04,3788394.98,1288953615.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,5,4987558.91,1432965.5,41325.16,3513267.45,1196837381.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,6,5097975.84,1466700.07,42298.19,3588977.56,1226233850.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,7,5581553.33,1594962.68,45997.5,3940592.94,1326877218.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,8,5833993.71,1679708.67,48441.36,4105844.0,1405080612.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,9,5085127.61,1461879.3,42159.49,3581088.91,1221521408.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,10,5843367.9,1678043.31,48393.53,4116931.64,1401041436.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,11,4957246.43,1426810.07,41148.22,3489287.83,1193247013.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2024,12,5018410.68,1443541.94,41630.51,3533237.75,1206711007.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,1,5973227.8,1713895.79,49427.2,4209904.33,1430101189.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,2,5651326.92,1626501.65,46907.11,3977918.11,1360200600.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,3,5976485.7,1724633.0,49736.96,4202115.72,1445023830.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,4,6100448.29,1752695.35,50546.14,4297206.37,1463873430.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,5,6770773.85,1950524.06,56251.54,4763998.19,1632285552.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,6,7134357.1,2001743.65,57728.85,5074884.8,1642720191.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,7,7531679.27,2128981.27,61398.09,5341300.13,1756939848.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,8,6573582.44,1889960.36,54505.07,4629116.83,1579327220.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,9,6761923.29,1916245.8,55263.05,4790414.35,1584376211.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,10,7462008.83,2118841.28,61105.45,5282061.82,1754471414.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,11,5558239.34,1600463.64,46156.23,3911619.87,1338882583.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2025,12,6022366.84,1727539.52,49820.87,4245006.45,1441208998.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2026,1,6741946.56,1942448.12,56018.74,4743479.95,1625665832.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2026,2,6372123.33,1850267.06,53360.17,4468495.94,1557223816.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2026,3,7364022.54,2127595.53,61358.49,5175068.94,1784204407.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2026,4,7254141.16,2079150.39,59961.26,5115029.88,1733489987.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2026,5,6697385.22,1939545.73,55935.12,4701904.7700000005,1629256222.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2026,6,7425122.25,2133432.28,61526.35,5230163.58,1781960370.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Bridge of the Americas,2026,7,7607274.28,2171878.63,62635.35,5372760.38,1805634596.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2023,9,763410.16,339259.64,7745.5,416404.41,236990851.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2023,10,985641.71,436360.14,9962.64,539319.87,304047936.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2023,11,130832.25,57817.28,1320.19,71694.45,40237716.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2023,12,135513.7,60023.39,1370.51,74120.45,41836534.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,1,154918.67,68202.88,1557.1,85158.71,47343769.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,2,205908.6,90923.27,2076.0,112909.81,63243473.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,3,184079.96,81854.9,1868.67,100355.8,57203251.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,4,680046.64,301547.64,6885.0,371614.08,210337610.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,5,1050207.87,466071.47,10641.2,573495.8,325277143.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,6,321524.63,142679.52,3257.42,175588.23,99572787.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,7,507107.43,223656.56,5106.37,278344.56,155443738.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,8,638853.92,283926.08,6482.36,348445.84,198346201.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,9,643964.2,285826.3,6525.71,351612.08,199501003.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,10,594460.48,263675.03,6019.74,324765.79,183956593.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,11,532963.91,236721.58,5404.94,290837.8,165303318.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2024,12,469243.19,208457.88,4759.42,256026.48,145584203.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,1,565247.37,250471.14,5718.61,309058.1,174629932.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,2,751013.7,333770.73,7620.4,409622.44,233165644.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,3,638802.12,284527.23,6496.11,347778.42,199056840.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,4,566270.82,251263.62,5736.74,309270.64,175340594.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,5,1150869.51,511812.29,11685.38,627371.62,357698251.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,6,1011090.54,436455.26,9964.51,564670.56,298896127.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,7,1031834.63,449451.63,10261.5,572121.54,309732762.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,8,909746.06,403490.25,9212.08,497043.52,281486443.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,9,1184668.77,517436.6,11813.81,655418.71,357254143.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,10,1138176.92,498338.59,11377.45,628460.06,344641034.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,11,838459.82,372431.61,8503.12,457525.04,260079625.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2025,12,860356.42,381130.74,8701.46,470524.47000000003,265675598.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2026,1,762311.4,339059.73,7740.81,415510.71,236985098.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2026,2,711695.84,319534.51,7295.91,384866.19,224727228.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2026,3,874976.63,390672.9,8919.44,475384.1,273758638.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2026,4,783596.49,346733.62,7916.21,428946.82,241515158.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2026,5,870646.71,389369.16000000003,8889.65,472387.59,273136904.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2026,6,851303.55,377766.33,8624.72,464912.01,263632595.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Tornillo–Guadalupe,2026,7,812795.03,358103.1,8175.8,446515.66,248710016.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2023,9,24714521.02,5014641.64,198850.21,19501029.09,5489786353.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2023,10,26031767.28,5260476.11,208598.56,20562692.56,5737178675.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2023,11,38041121.11,7676332.84,304396.59,30060391.669999998,8360779329.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2023,12,33093311.73,6699915.49,265677.95,26127718.2,7319731629.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,1,38829509.12,7814193.29,309863.42,30705452.19,8489290454.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,2,37198126.6,7504465.01,297581.7,29396080.39,8171792433.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,3,37556462.58,7622904.16,302278.23,29631280.31,8347820265.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,4,38391068.79,7763957.15,307871.1,30319240.35,8473554349.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,5,37242564.98,7533969.27,298751.6,29409845.33,8224863068.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,6,35825681.32,7264408.58,288062.12,28273210.18,7947939433.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,7,41928711.14,8447764.65,334986.69,33145959.38,9187693267.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,8,42950230.4,8709262.58,345356.61,33895611.25,9528949688.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,9,40869074.37,8274954.36,328133.98,32265985.85,9041286398.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,10,43233609.88,8742689.11,346681.78,34144238.95,9541137387.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,11,38796890.94,7866616.26,311942.5,30618332.18,8606539441.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2024,12,35692099.2,7228695.7299999995,286646.32,28176757.41,7900114180.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,1,38703045.37,7821756.91,310163.5,30571125.45,8531253217.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,2,34766561.7,7045408.56,279378.26,27441774.52,7704030676.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,3,38899309.47,7903678.93,313411.7,30682218.66,8663621141.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,4,37764597.05,7640502.98,302976.33,29821118.66,8342112106.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,5,35026675.73,7105538.75,281762.5,27639374.52,7777311312.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,6,38103282.95,7576309.3,300430.31,30226543.580000002,8137080588.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,7,40777311.22,8149597.47,323163.43,32304550.2,8795834826.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,8,37596336.95,7618161.32,302090.06,29676085.76,8329615819.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,9,39434167.56,7897181.52,313154.38,31223831.99,8539892652.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,10,43334731.11,8690071.99,344595.61,34300063.23,9409386532.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,11,31618594.69,6415348.07,254393.74,24948853.09,7023060808.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2025,12,35171006.1,7106449.44,281798.13,27782757.3,7749541803.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2026,1,37473032.97,7602473.51,301467.96,29569091.72,8321902060.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2026,2,37152988.94,7578639.74,300523.02999999997,29273826.43,8337483820.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2026,3,39069308.51,7938555.15,314794.92,30815958.46,8702189924.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2026,4,37381422.53,7549491.14,299366.92,29532564.73,8229028482.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2026,5,36752731.29,7487424.78,296905.94,28968400.68,8227485742.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2026,6,39605611.33,8013410.97,317763.09,31274436.95,8749706627.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",Ysleta–Zaragoza,2026,7,40389308.82,8132303.06,322477.86,31934527.4,8839186124.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2023,9,346046.42,336346.51,9700.14,0.0,559265355.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2023,10,409267.04,397795.12,11471.98,0.0,657379807.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2023,11,681994.87,662877.96,19117.3,0.0,1092715806.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2023,12,601240.88,584387.72,16853.5,0.0,967612806.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,1,711534.11,691589.18,19945.1,0.0,1134341999.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,2,788755.54,766646.05,22109.34,0.0,1262810982.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,3,713096.47,693107.93,19988.77,0.0,1153303816.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,4,801046.66,778592.6,22454.08,0.0,1288953615.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,5,743175.39,722343.71,20831.95,0.0,1196837381.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,6,759924.83,738623.51,21300.81,0.0,1226233850.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,7,830406.29,807129.29,23276.78,0.0,1326877218.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,8,869823.62,845441.96,24382.23,0.0,1405080612.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,9,757843.86,736600.85,21242.75,0.0,1221521408.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,10,870577.46,846174.79,24403.06,0.0,1401041436.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,11,739035.57,718319.33,20715.78,0.0,1193247013.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2024,12,748024.87,727057.51,20968.04,0.0,1206711007.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,1,889712.4,864773.21,24939.19,0.0,1430101189.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,2,842498.03,818882.22,23616.1,0.0,1360200600.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,3,891643.8,866650.24,24993.54,0.0,1445023830.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,4,909000.6,883520.93,25479.96,0.0,1463873430.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,5,1009656.42,981354.34,28301.09,0.0,1632285552.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,6,1064534.47,1026378.55,29600.16,8555.8,1642720191.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,7,1117111.7,1085798.12,31313.76,0.0,1756939848.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,8,979696.61,952234.9400000001,27461.63,0.0,1579327220.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,9,1003655.98,975522.89,28133.36,0.0,1584376211.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,10,1130900.11,1077123.91,31063.02,22712.86,1754471414.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,11,828731.63,805501.86,23230.29,0.0,1338882583.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2025,12,896964.55,871821.8,25142.73,0.0,1441208998.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2026,1,1009293.25,977209.05,28182.12,3902.25,1625665832.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2026,2,952360.9400000001,925665.22,26695.67,0.0,1557223816.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2026,3,1099030.92,1068224.05,30806.91,0.0,1784204407.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2026,4,1080168.74,1049890.52,30278.29,0.0,1733489987.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2026,5,1000211.4,972174.77,28037.01,0.0,1629256222.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2026,6,1106406.47,1075393.05,31013.38,0.0,1781960370.0
+plus_30,Sustained +30 min congestion,Bridge of the Americas,2026,7,1131499.98,1099783.34,31716.93,0.0,1805634596.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2023,9,165204.05,161516.57,3687.58,0.0,236990851.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2023,10,213080.41,208323.85,4756.46,0.0,304047936.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2023,11,28270.1,27639.66,631.03,0.0,40237716.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2023,12,29299.57,28645.68,653.66,0.0,41836534.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,1,33441.02,32694.53,746.52,0.0,47343769.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,2,44483.64,43490.8,992.52,0.0,63243473.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,3,39841.88,38952.52,889.14,0.0,57203251.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,4,147077.57,143794.87,3282.97,0.0,210337610.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,5,227184.8,222113.78,5071.09,0.0,325277143.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,6,69551.89,67999.35,1552.3,0.0,99572787.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,7,109518.21,107073.74,2444.39,0.0,155443738.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,8,138252.38,135166.44,3085.86,0.0,198346201.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,9,139309.94,136200.32,3109.78,0.0,199501003.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,10,128577.07,125707.47,2870.14,0.0,183956593.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,11,115318.04,112744.15,2573.9,0.0,165303318.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2024,12,101536.29,99269.38,2266.35,0.0,145584203.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,1,122226.91,119498.47,2728.23,0.0,174629932.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,2,162523.87,158896.4,3627.95,0.0,233165644.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,3,138322.22,135234.88,3087.72,0.0,199056840.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,4,122492.48,119757.69,2734.08,0.0,175340594.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,5,249098.96,243538.73,5560.48,0.0,357698251.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,6,217129.59,212282.96,4846.69,0.0,298896127.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,7,222109.74,217151.95,4957.93,0.0,309732762.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,8,196767.5,192375.26,4392.15,0.0,281486443.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,9,255191.95,249495.93,5696.34,0.0,357254143.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,10,245334.04,239858.13,5476.34,0.0,344641034.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,11,181422.0,177372.3,4049.46,0.0,260079625.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2025,12,186025.81,181873.8,4152.28,0.0,265675598.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2026,1,165003.97,161320.58,3682.75,0.0,236985098.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2026,2,154436.29,150989.3,3447.24,0.0,224727228.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2026,3,189585.87,185353.82,4231.5,0.0,273758638.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2026,4,169377.88,165597.0,3780.63,0.0,241515158.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2026,5,188729.31,184516.72,4212.69,0.0,273136904.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2026,6,184152.6,180042.12,4110.47,0.0,263632595.0
+plus_30,Sustained +30 min congestion,Tornillo–Guadalupe,2026,7,175487.52,171570.82,3917.0099999999998,0.0,248710016.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2023,9,2760460.39,2644052.04,104847.13,11560.86,5489786353.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2023,10,2931307.14,2783058.11,110359.01,37889.46,5737178675.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2023,11,4314511.18,4065996.81,161232.87,87281.28,8360779329.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2023,12,3807400.6,3539122.25,140340.05,127938.34000000001,7319731629.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,1,4416432.81,4148363.71,164498.65,103570.02,8489290454.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,2,4205399.03,3975736.04,157652.96,72008.93,8171792433.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,3,4181359.84,4018163.88,159335.75,3860.1400000000003,8347820265.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,4,4268060.28,4104922.29,162776.38,361.65,8473554349.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,5,4140238.19,3982323.42,157914.21,0.0,8224863068.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,6,4078234.8,3832343.83,151967.79,93923.48,7947939433.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,7,4708919.98,4480351.49,177664.13,50904.95,9187693267.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,8,4776678.59,4594489.09,182189.65,0.0,9528949688.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,9,4551517.15,4370761.97,173317.59,7437.14,9041286398.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,10,4805958.66,4622652.1,183306.46,0.0,9541137387.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,11,4324023.92,4150155.94,164570.13,9297.61,8606539441.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2024,12,3968652.94,3817282.71,151370.37,0.0,7900114180.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,1,4302448.96,4137806.58,164080.34,562.61,8531253217.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,2,3866128.1,3718668.4,147460.1,0.0,7704030676.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,3,4327631.89,4162570.21,165062.13,0.0,8663621141.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,4,4198358.7,4038226.94,160131.56,0.0,8342112106.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,5,3895743.14,3747153.71,148589.37,0.0,7777311312.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,6,4989565.06,4062570.15,161096.7,765898.13,8137080588.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,7,4851177.96,4351395.52,172549.97,327232.06,8795834826.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,8,4207293.5,4021281.5,159459.61000000002,26552.190000000002,8329615819.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,9,4713225.32,4209500.72,166923.16,336801.92,8539892652.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,10,5266414.15,4626927.78,183476.43,456010.37,9409386532.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,11,3544783.06,3382662.75,134135.95,27984.4,7023060808.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2025,12,3921441.52,3760056.66,149101.38,12283.82,7749541803.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2026,1,4451584.57,4008924.91,158969.59,283689.99,8321902060.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2026,2,4139188.24,3978362.61,157757.91,3068.12,8337483820.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2026,3,4351819.25,4180791.29,165784.41,5243.15,8702189924.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2026,4,4167624.19,3996047.12,158458.79,13118.34,8229028482.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2026,5,4090671.14,3934647.15,156024.51,0.0,8227485742.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2026,6,4403668.41,4235128.75,167939.46,600.24,8749706627.0
+plus_30,Sustained +30 min congestion,Ysleta–Zaragoza,2026,7,4655079.3,4315382.03,171121.71,168575.25,8839186124.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2023,9,35676.4,34675.95,1000.05,0.0,559265355.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2023,10,42664.52,41468.39,1195.98,0.0,657379807.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2023,11,72091.68000000001,70071.03,2020.83,0.0,1092715806.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2023,12,64177.19,62378.24,1799.08,0.0,967612806.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,1,77737.77,75558.91,2179.12,0.0,1134341999.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,2,84382.33,82016.86,2365.2400000000002,0.0,1262810982.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,3,73001.3,70955.0,2046.23,0.0,1153303816.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,4,81655.87,79366.9,2288.94,0.0,1288953615.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,5,74788.1,72691.83,2096.31,0.0,1196837381.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,6,80089.72,77844.95,2244.95,0.0,1226233850.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,7,89039.86,86544.08,2495.8,0.0,1326877218.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,8,88498.86,86018.61,2480.46,0.0,1405080612.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,9,77280.45,75114.48,2166.18,0.0,1221521408.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,10,88038.66,85571.01,2467.99,0.0,1401041436.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,11,76114.79,73981.16,2133.54,0.0,1193247013.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2024,12,75169.78,73062.54,2106.96,0.0,1206711007.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,1,90955.2,88405.47,2549.84,0.0,1430101189.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,2,84796.34,82419.39,2377.06,0.0,1360200600.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,3,89655.79,87142.62,2513.06,0.0,1445023830.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,4,91996.77,89417.87,2578.7799999999997,0.0,1463873430.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,5,102085.67,99223.99,2861.62,0.0,1632285552.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,6,140191.21,136261.56,3929.58,0.0,1642720191.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,7,135072.45,131286.2,3786.18,0.0,1756939848.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,8,103010.92,100123.48,2887.5,0.0,1579327220.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,9,118618.09,115292.92,3324.93,0.0,1584376211.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,10,127849.88,124266.09,3583.55,0.0,1754471414.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,11,86373.84,83952.74,2421.02,0.0,1338882583.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2025,12,91951.9,89374.31,2577.58,0.0,1441208998.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2026,1,105224.95,102275.43,2949.64,0.0,1625665832.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2026,2,89117.41,86619.53,2498.15,0.0,1557223816.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2026,3,107843.44,104820.31,3022.89,0.0,1784204407.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2026,4,112524.71,109370.72,3154.16,0.0,1733489987.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2026,5,96691.2,93981.05,2710.29,0.0,1629256222.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2026,6,112591.36,109435.03,3155.96,0.0,1781960370.0
+preclearance,New lanes / preclearance investment,Bridge of the Americas,2026,7,123465.91,120005.29,3460.76,0.0,1805634596.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2023,9,3474.24,3396.7999999999997,77.59,0.0,236990851.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2023,10,4712.03,4606.72,104.99,0.0,304047936.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2023,11,667.14,652.54,14.91,0.0,40237716.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2023,12,744.29,727.67,16.38,0.0,41836534.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,1,888.31,868.48,19.86,0.0,47343769.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,2,1090.8700000000001,1066.66,24.31,0.0,63243473.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,3,809.19,791.19,18.17,0.0,57203251.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,4,2885.23,2820.57,64.42,0.0,210337610.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,5,4206.57,4112.8,93.86,0.0,325277143.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,6,1657.9,1620.83,37.06,0.0,99572787.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,7,2666.35,2606.91,59.56,0.0,155443738.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,8,2714.48,2653.92,60.63,0.0,198346201.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,9,2762.47,2700.8,61.67,0.0,199501003.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,10,2430.56,2376.3,54.4,0.0,183956593.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,11,2400.74,2347.06,53.74,0.0,165303318.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2024,12,1876.69,1835.13,41.79,0.0,145584203.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,1,2422.36,2368.27,54.06,0.0,174629932.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,2,3033.21,2965.54,67.77,0.0,233165644.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,3,2598.03,2539.92,57.97,0.0,199056840.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,4,2328.75,2276.52,52.02,0.0,175340594.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,5,4764.9,4658.44,106.27,0.0,357698251.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,6,11486.69,11230.48,256.4,0.0,298896127.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,7,8483.01,8293.73,189.34,0.0,309732762.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,8,4479.99,4379.96,100.01,0.0,281486443.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,9,9257.22,9050.61,206.54,0.0,357254143.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,10,8535.89,8345.35,190.41,0.0,344641034.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,11,4030.3,3940.31,89.96,0.0,260079625.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2025,12,3752.6,3668.9,83.82000000000001,0.0,265675598.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2026,1,4885.35,4776.1,109.14,0.0,236985098.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2026,2,2764.1,2702.45,61.65,0.0,224727228.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2026,3,3613.81,3533.21,80.66,0.0,273758638.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2026,4,3651.31,3569.71,81.41,0.0,241515158.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2026,5,3235.61,3163.33,72.2,0.0,273136904.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2026,6,3912.21,3824.83,87.31,0.0,263632595.0
+preclearance,New lanes / preclearance investment,Tornillo–Guadalupe,2026,7,5049.94,4937.08,112.66,0.0,248710016.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2023,9,512203.85,492667.79,19536.4,0.0,5489786353.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2023,10,542527.54,521834.6,20693.06,0.0,5737178675.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2023,11,797977.01,767540.82,30436.06,0.0,8360779329.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2023,12,696526.13,669959.42,26566.57,0.0,7319731629.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,1,827645.61,796077.9,31567.69,0.0,8489290454.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,2,784818.62,754884.38,29934.07,0.0,8171792433.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,3,775887.8099999999,746294.14,29593.46,0.0,8347820265.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,4,792198.36,761982.6,30215.85,0.0,8473554349.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,5,763923.93,734786.65,29137.27,0.0,8224863068.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,6,749650.73,721057.97,28592.67,0.0,7947939433.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,7,886098.29,852301.22,33796.95,0.0,9187693267.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,8,885000.53,851245.72,33755.37,0.0,9528949688.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,9,843180.3,811020.06,32160.29,0.0,9041286398.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,10,888863.41,854960.72,33902.5,0.0,9541137387.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,11,803836.01,773177.02,30659.57,0.0,8606539441.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2024,12,731469.76,703570.41,27899.05,0.0,7900114180.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,1,799798.77,769293.38,30505.8,0.0,8531253217.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,2,712926.55,685734.75,27192.15,0.0,7704030676.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,3,796877.74,766483.33,30394.08,0.0,8663621141.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,4,776621.51,747000.42,29621.079999999998,0.0,8342112106.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,5,719614.49,692167.7,27447.43,0.0,7777311312.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,6,892917.83,858860.62,34057.0,0.0,8137080588.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,7,912889.92,878070.85,34819.02,0.0,8795834826.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,8,786528.59,756529.16,29999.26,0.0,8329615819.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,9,872198.83,838931.97,33266.97,0.0,8539892652.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,10,946723.91,910614.68,36109.63,0.0,9409386532.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,11,658539.42,633421.59,25118.0,0.0,7023060808.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2025,12,727667.27,699912.51,27754.14,0.0,7749541803.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2026,1,770690.98,741295.63,29395.14,0.0,8321902060.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2026,2,725851.87,698166.79,27685.19,0.0,8337483820.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2026,3,783835.73,753939.18,29896.68,0.0,8702189924.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2026,4,779258.42,749536.46,29721.920000000002,0.0,8229028482.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2026,5,738171.64,710016.96,28154.95,0.0,8227485742.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2026,6,814652.17,783580.0,31072.06,0.0,8749706627.0
+preclearance,New lanes / preclearance investment,Ysleta–Zaragoza,2026,7,857965.59,825241.23,32723.91,0.0,8839186124.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2023,9,280436.76,272575.69,7860.95,0.0,615191834.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2023,10,332398.45,323080.83,9317.36,0.0,723117793.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2023,11,554390.75,538851.32,15540.18,0.0,1201987444.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2023,12,487979.23,474300.27,13678.54,0.0,1064374091.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,1,579425.61,563184.02,16241.83,0.0,1247776151.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,2,641348.93,623370.94,17977.32,0.0,1389092111.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,3,577746.32,561551.74,16194.89,0.0,1268634152.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,4,650184.73,631959.49,18225.07,0.0,1417848966.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,5,603032.36,586129.45,16903.42,0.0,1316521186.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,6,616189.24,598916.77,17272.08,0.0,1348857182.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,7,675684.66,656744.71,18940.17,0.0,1459564921.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,8,705030.79,685267.72,19762.46,0.0,1545588660.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,9,614744.3099999999,597512.87,17231.59,0.0,1343673525.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,10,706583.21,686777.42,19805.75,0.0,1541145564.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,11,599121.44,582327.78,16793.93,0.0,1312571700.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2024,12,606597.93,589594.68,17003.33,0.0,1327382083.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,1,722424.41,702174.44,20250.44,0.0,1573111335.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,2,683014.68,663869.08,19145.6,0.0,1496220720.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,3,721875.13,701640.65,20234.68,0.0,1589526162.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,4,737590.19,716914.71,20675.31,0.0,1610260722.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,5,818133.0,795200.18,22933.16,0.0,1795514189.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,6,867218.27,842909.19,24309.17,0.0,1806992200.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,7,913997.76,888377.6900000001,25620.38,0.0,1932633819.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,8,794667.46,772392.06,22275.1,0.0,1737259910.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,9,820117.82,797129.61,22988.57,0.0,1742813852.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,10,904622.99,879265.73,25357.31,0.0,1929918547.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,11,671691.76,652863.18,18828.28,0.0,1472770850.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2025,12,728411.79,707993.81,20418.1,0.0,1585329825.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2026,1,814627.7,791793.28,22834.46,0.0,1788232398.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2026,2,768559.05,747015.56,21543.35,0.0,1712946156.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2026,3,889223.61,864297.88,24925.75,0.0,1962624816.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2026,4,877562.55,852963.67,24598.49,0.0,1906839034.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2026,5,808286.99,785630.11,22657.03,0.0,1792181836.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2026,6,897738.99,872574.37,25164.57,0.0,1960156423.0
+volume_growth,"10% truck-volume growth, no capacity add",Bridge of the Americas,2026,7,921099.0,895279.95,25819.57,0.0,1986198028.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2023,9,128396.28,125530.33,2866.14,0.0,260689975.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2023,10,165970.51,162265.83000000002,3704.3,0.0,334452808.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2023,11,22043.07,21550.94,492.14,0.0,44261449.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2023,12,22815.41,22306.24,509.23,0.0,46020222.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,1,26131.66,25548.5,583.28,0.0,52078090.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,2,34700.56,33926.26,774.5,0.0,69567844.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,3,30954.16,30262.93,690.98,0.0,62923644.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,4,114454.13,111899.89,2555.14,0.0,231371396.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,5,176708.08,172764.01,3944.56,0.0,357804860.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,6,54101.1,52893.4,1207.25,0.0,109530088.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,7,85491.82,83583.01,1908.17,0.0,170988138.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,8,107445.35,105046.7,2398.58,0.0,218180856.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,9,108348.71,105930.04,2418.43,0.0,219451017.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,10,100041.08,97807.96,2233.1,0.0,202352257.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,11,89653.2,87652.02,2001.36,0.0,181833603.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2024,12,78929.43,77167.64,1761.88,0.0,160142613.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,1,95153.66,93029.9,2124.02,0.0,192092951.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,2,126308.89,123489.58,2819.57,0.0,256482188.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,3,107361.9,104965.31999999999,2396.07,0.0,218962494.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,4,95285.55,93158.94,2127.03,0.0,192874592.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,5,193518.69,189198.9,4319.47,0.0,393468065.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,6,171584.01,167754.1,3830.0,0.0,328785728.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,7,174623.91,170725.77,3897.78,0.0,340706011.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,8,153103.61,149685.88,3417.77,0.0,309635079.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,9,200321.05,195849.45,4471.13,0.0,392979590.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,10,192315.5,188022.52,4292.55,0.0,379105088.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,11,141040.11000000002,137891.89,3148.15,0.0,286087555.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2025,12,144845.38999999998,141612.45,3232.92,0.0,292243178.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2026,1,128177.08,125315.69,2860.89,0.0,260683603.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2026,2,119311.15,116648.05,2663.38,0.0,247199964.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2026,3,146942.24,143662.59,3279.79,0.0,301134461.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2026,4,131969.49,129023.44,2945.68,0.0,265666680.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2026,5,146140.12,142878.23,3261.9900000000002,0.0,300450570.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2026,6,143244.57,140047.06,3197.47,0.0,289995856.0
+volume_growth,"10% truck-volume growth, no capacity add",Tornillo–Guadalupe,2026,7,137071.15,134011.69,3059.5099999999998,0.0,273580967.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2023,9,2300842.02,2213084.66,87757.44,0.0,6038765019.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2023,10,2427232.72,2334654.96,92578.15,0.0,6310896555.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2023,11,3548925.34,3413564.33,135361.06,0.0,9196857285.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2023,12,3083476.96,2965868.32,117608.54,0.0,8051704809.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,1,3626198.34,3487889.97,138308.56,0.0,9338219494.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,2,3470589.59,3338216.44,132373.53,0.0,8988971745.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,3,3495929.58,3362589.64,133339.91,0.0,9182602302.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,4,3578589.89,3442097.31,136492.59,0.0,9320909799.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,5,3471133.93,3338739.87,132394.51,0.0,9047349418.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,6,3336082.51,3208839.32,127243.06,0.0,8742733440.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,7,3913894.0,3764612.06,149281.75,0.0,10106462657.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,8,3999483.78,3846937.78,152546.63999999998,0.0,10481844617.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,9,3807845.69,3662609.12,145237.23,0.0,9945415030.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,10,4030086.82,3876373.34,153713.22,0.0,10495251168.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,11,3612808.02,3475010.2,137797.56,0.0,9467193345.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2024,12,3325155.93,3198329.89,126826.12,0.0,8690125616.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,1,3608599.12,3470961.94,137637.21,0.0,9384378580.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,2,3238201.14,3114691.46,123510.15,0.0,8474433744.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,3,3619487.46,3481434.87,138052.13,0.0,9529983270.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,4,3519626.59,3385381.92,134243.8,0.0,9176323228.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,5,3261127.6,3136743.06,124384.2,0.0,8555042443.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,6,3574465.58,3438129.94,136335.29,0.0,8950788611.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,7,3818021.55,3672396.5,145625.1,0.0,9675418291.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,8,3501892.32,3368324.93,133567.1,0.0,9162577429.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,9,3689451.96,3548730.93,140721.23,0.0,9393881878.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,10,4114234.85,3897764.98,154561.93,61907.97,10350325142.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,11,2943615.3,2831341.14,112273.34,0.0,7725366890.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2025,12,3279540.64,3154453.48,125086.52,0.0,8524496015.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2026,1,3488776.95,3355709.58,133067.2,0.0,9154092300.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2026,2,3451773.39,3320117.48,131655.69,0.0,9171232204.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2026,3,3635246.59,3496593.02,138653.58,0.0,9572408912.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2026,4,3486279.66,3353308.13,132971.69,0.0,9051931353.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2026,5,3416264.53,3285962.91,130301.67,0.0,9050234328.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2026,6,3691130.32,3550345.26,140784.92,0.0,9624677294.0
+volume_growth,"10% truck-volume growth, no capacity add",Ysleta–Zaragoza,2026,7,3771126.18,3627290.18,143836.17,0.0,9723104702.0

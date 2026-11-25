@@ -114,7 +114,12 @@ export default function PlaygroundPage() {
 
   // Names behind the "Holiday" input, and other calendar context that is NOT a model input.
   const holidayNames = c
-    ? [c.us_federal_holiday_name, c.mx_official_holiday_name, c.us_is_summer_vacation ? 'El Paso ISD summer vacation' : null].filter(
+    ? [
+        c.us_federal_holiday_name,
+        c.mx_official_holiday_name,
+        c.holiday_adjacent_name,
+        c.us_is_summer_vacation ? 'El Paso ISD summer vacation' : null,
+      ].filter(
         Boolean,
       )
     : []
@@ -314,8 +319,9 @@ export default function PlaygroundPage() {
               </p>
               <p>
                 <span className="font-medium text-ink">Holidays.</span> A day counts as a holiday when it is a US federal
-                holiday, a Mexican official holiday, or El Paso ISD summer vacation, the same definition the model was
-                trained with.
+                holiday, a Mexican official holiday, the day before or after one of those, or El Paso ISD summer
+                vacation. The model was trained without the days before and after, so on those days it applies the
+                holiday effect it learned from the holidays themselves.
               </p>
             </div>
             <div className="prose-body space-y-2">

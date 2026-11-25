@@ -1,0 +1,6 @@
+scenario_id,scenario_name,added_wait_min,volume_multiplier
+baseline,Current wait times,0.0,1.0
+plus_30,Sustained +30 min congestion,30.0,1.0
+commercial_disruption,"Commercial lanes not shielded (2019-style, +75 min)",75.0,1.0
+preclearance,New lanes / preclearance investment,-12.0,1.0
+volume_growth,"10% truck-volume growth, no capacity add",18.0,1.1
