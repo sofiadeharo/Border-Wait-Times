@@ -38,7 +38,12 @@ Images are built by GitHub Actions into GitHub Container Registry (`ghcr.io/<you
    server is created with the password you type. At the end it prints the site URL and
    starts `bwt-db-init` once.
 
-   Options: `LOCATION=eastus` (if your subscription blocks `southcentralus`),
+   Region defaults to `northcentralus`: the Azure for Students subscription only allows
+   mexicocentral / southcentralus / northcentralus / eastus2 / norwayeast, and blocks new
+   Postgres servers in southcentralus and eastus2. Check a region with
+   `az postgres flexible-server list-skus -l <region> --query "[0].reason"`.
+
+   Options: `LOCATION=<region>`,
    `ALLOW_MY_IP=1` (open Postgres to your machine for Power BI Desktop / psql / Adminer).
 
 ## Updating the site

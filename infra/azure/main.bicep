@@ -162,10 +162,19 @@ resource logs 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
   }
 }
 
-resource env 'Microsoft.App/managedEnvironments@2024-03-01' = {
+// environmentMode must be explicit: left unset, new environments can come up as 'Express',
+// which rejects Container Apps Jobs (bwt-cbp-pipeline, bwt-db-init).
+resource env 'Microsoft.App/managedEnvironments@2026-07-01' = {
   name: '${prefix}-env'
   location: location
   properties: {
+    environmentMode: 'WorkloadProfiles'
+    workloadProfiles: [
+      {
+        name: 'Consumption'
+        workloadProfileType: 'Consumption'
+      }
+    ]
     appLogsConfiguration: {
       destination: 'log-analytics'
       logAnalyticsConfiguration: {

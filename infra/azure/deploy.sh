@@ -8,7 +8,8 @@
 #   PG_ADMIN_PASSWORD   Postgres admin password (prompted if unset). When the server already
 #                       exists (e.g. created for the Power BI warehouse) use ITS password.
 #   RG                  resource group            (default: borderplex-rg)
-#   LOCATION            Azure region              (default: southcentralus)
+#   LOCATION            Azure region              (default: northcentralus — the student subscription
+#                       may not create Postgres in southcentralus/eastus2)
 #   PG_SERVER           Postgres server name      (default: borderplex-pg)
 #   PG_ADMIN            Postgres admin login      (default: bwtadmin)
 #   PG_DB               database name             (default: border_wait_times)
@@ -20,7 +21,7 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RG="${RG:-borderplex-rg}"
-LOCATION="${LOCATION:-southcentralus}"
+LOCATION="${LOCATION:-northcentralus}"
 PG_SERVER="${PG_SERVER:-borderplex-pg}"
 PG_ADMIN="${PG_ADMIN:-bwtadmin}"
 PG_DB="${PG_DB:-border_wait_times}"
@@ -66,7 +67,10 @@ for img in bwt-api bwt-frontend bwt-pipeline bwt-db-init; do
 done
 
 say "Resource group ${RG} (${LOCATION})"
-az group create -n "$RG" -l "$LOCATION" -o none
+# A resource group's own location is only metadata; reuse it as-is so a region change doesn't fail here.
+if ! az group show -n "$RG" -o none 2>/dev/null; then
+  az group create -n "$RG" -l "$LOCATION" -o none
+fi
 
 create_pg=true
 if az postgres flexible-server show -g "$RG" -n "$PG_SERVER" -o none 2>/dev/null; then
