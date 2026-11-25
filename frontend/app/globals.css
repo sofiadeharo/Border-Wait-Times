@@ -133,13 +133,13 @@ body {
    --------------------------------------------------------------------------- */
 @layer components {
   .page {
-    @apply min-h-screen px-4 py-8 sm:px-8 sm:py-10;
+    @apply min-h-screen px-3 py-4 sm:px-8 sm:py-10;
   }
   .page-header {
-    @apply mb-8;
+    @apply mb-4 sm:mb-8;
   }
   .page-title {
-    @apply text-2xl font-semibold tracking-tight text-ink sm:text-3xl;
+    @apply text-xl font-semibold tracking-tight text-ink sm:text-3xl;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7), 0 0 18px rgba(255, 255, 255, 0.55);
   }
   .page-subtitle {
@@ -163,7 +163,7 @@ body {
       0 1px 3px var(--glass-shadow);
   }
   .card-pad {
-    @apply p-5;
+    @apply p-4 sm:p-5;
   }
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-wider text-ink-3;
@@ -218,11 +218,21 @@ body {
 
   /* Sidebar (NavTabs.tsx): frosted glass column with gel-highlighted active tab. */
   .aero-nav {
-    border-right: 1px solid var(--glass-edge);
+    /* Phones: top bar. md+: sidebar (see media query below). */
+    border-bottom: 1px solid var(--glass-edge);
     background: linear-gradient(180deg, var(--glass-top) 0%, var(--glass-bottom) 100%);
     backdrop-filter: blur(16px) saturate(1.5);
     -webkit-backdrop-filter: blur(16px) saturate(1.5);
-    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.6), 4px 0 24px var(--glass-shadow);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.6), 0 4px 18px var(--glass-shadow);
+    scrollbar-width: none;
+  }
+  .aero-nav ::-webkit-scrollbar { display: none; }
+  @media (min-width: 48rem) {
+    .aero-nav {
+      border-bottom: 0;
+      border-right: 1px solid var(--glass-edge);
+      box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.6), 4px 0 24px var(--glass-shadow);
+    }
   }
   .aero-tab-active {
     color: var(--on-accent);

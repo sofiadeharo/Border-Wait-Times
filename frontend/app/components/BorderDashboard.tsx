@@ -41,8 +41,8 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
     <div className="card mb-6 flex flex-col overflow-hidden sm:flex-row">
       {/* LAYOUT: left-hand port list. Fixed width on sm+ (`sm:w-56`); on mobile it
           becomes a horizontally-scrolling row of buttons instead (see the inner div). */}
-      <div className="shrink-0 border-b border-line p-4 sm:w-56 sm:border-b-0 sm:border-r">
-        <p className="eyebrow px-3 pb-3">
+      <div className="shrink-0 border-b border-line p-2 sm:w-56 sm:border-b-0 sm:border-r sm:p-4">
+        <p className="eyebrow hidden px-3 pb-3 sm:block">
           Ports of Entry
         </p>
         <div className="flex gap-1 overflow-x-auto sm:flex-col sm:overflow-visible">
@@ -79,7 +79,10 @@ export default function BorderDashboard({ data }: BorderDashboardProps) {
 
       {/* LAYOUT: right-hand panel — fills remaining width (`flex-1`), fixed minimum
           height (`min-h-[420px]`) so the map has room to render. */}
-      <div className="relative min-h-[420px] flex-1">
+      {/* Phones get a fixed 320px height: the map's `h-full` needs a definite parent height,
+          which a min-height alone doesn't give in the stacked (flex-col) layout. `flex-1` only
+          from sm up — in a column its 0 flex-basis would override the height and collapse it. */}
+      <div className="relative h-[320px] sm:h-auto sm:min-h-[420px] sm:flex-1">
         {selectedPort === null ? (
           <BorderMap onSelectPort={setSelectedPort} selectedPort={selectedPort} />
         ) : (

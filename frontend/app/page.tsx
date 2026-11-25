@@ -106,7 +106,7 @@ export default function Home() {
 
         {/* LAYOUT: fastest/slowest summary cards, side by side on sm+ screens. */}
         {!loading && !error && fastest && slowest && (
-          <div className="mb-6 grid gap-4 sm:grid-cols-2">
+          <div className="mb-4 grid gap-3 sm:mb-6 sm:grid-cols-2 sm:gap-4">
             {[
               { title: 'Fastest crossing right now', row: fastest },
               { title: 'Slowest crossing right now', row: slowest },

@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistMono.variable} ${selawik.variable} h-full antialiased`}>
-      <body className="min-h-full flex">
+      <body className="min-h-full flex flex-col md:flex-row">
         <div className="fixed inset-0 -z-10">
           <Image
             src="/bridge-of-the-americas-2016.jpg"
