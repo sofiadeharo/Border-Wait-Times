@@ -38,5 +38,5 @@ Read-only PostgreSQL roles for exploration and API access (least-privilege by de
 Docker secrets for credential handling rather than plaintext env vars
 Isolated Docker network (cbp_network) between ingestion, database, and API services
 
-  
-
+**How did I use Claude for this?**
+This project grew out of two years of exploring machine learning, data analysis, and economic research in a border context. Using Claude Code helped me understand web app development, specifically by walking me through my first deployment, integrating my economic analysis graphs into the frontend, and refining the interface for mobile screens. A useful tool for an analysis centered idea. 
