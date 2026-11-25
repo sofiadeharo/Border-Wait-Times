@@ -35,12 +35,23 @@ interface BorderMapProps {
   selectedPort?: string | null
 }
 
+// LAYOUT: on phone-width screens (below Tailwind's `sm`, matching BorderDashboard's stacked
+// layout) the map starts zoomed in on downtown El Paso, where BOTA and Paso Del Norte sit
+// ~3 km apart and their labels would otherwise overlap. Ysleta and Santa Teresa are a pan
+// or pinch away. Wider screens fit all four ports.
+const PHONE_QUERY = '(max-width: 639px)'
+const PHONE_FOCUS = ['BOTA', 'Paso Del Norte']
+
 // LAYOUT: minimal map — white background (no basemap tiles), the US–Mexico border in blue,
-// and a 📍 pin per crossing with its name. Bounds are fitted to the four ports.
+// and a 📍 pin per crossing with its name. Bounds are fitted to the ports (see above).
 // ACTION: clicking a pin calls `onSelectPort`, which BorderDashboard uses to swap the map
 // out for that port's wait-time detail view.
 export default function BorderMap({ onSelectPort, selectedPort }: BorderMapProps) {
-  const bounds = L.latLngBounds(PORTS.map((p) => [p.lat, p.lng] as [number, number])).pad(0.25)
+  // This component only renders client-side (BorderDashboard loads it with ssr: false),
+  // so `window` is available here.
+  const isPhone = window.matchMedia(PHONE_QUERY).matches
+  const framed = isPhone ? PORTS.filter((p) => PHONE_FOCUS.includes(p.short)) : PORTS
+  const bounds = L.latLngBounds(framed.map((p) => [p.lat, p.lng] as [number, number])).pad(isPhone ? 1.2 : 0.25)
 
   return (
     <MapContainer

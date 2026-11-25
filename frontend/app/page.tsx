@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import BorderDashboard from './components/BorderDashboard'
-import { isLaneOpen, WAIT_TAG, WaitLevel, WaitTime } from './lib/waitTimes'
+import { isLaneOpen, WaitTime } from './lib/waitTimes'
 
 // ACTION: default value for the report form's "when did you cross?" field — now, rounded to the minute.
 function nowLocalDatetimeValue() {
@@ -13,7 +13,7 @@ function nowLocalDatetimeValue() {
 }
 
 // LAYOUT: the home page. Top to bottom: header, fastest/slowest summary cards,
-// wait-level legend, the map/port dashboard (BorderDashboard), then the report form.
+// the map/port dashboard (BorderDashboard), then the report form.
 export default function Home() {
   // ACTION: wait-time data + fetch status, populated by fetchData below.
   const [data, setData] = useState<WaitTime[]>([])
@@ -106,21 +106,18 @@ export default function Home() {
 
         {/* LAYOUT: fastest/slowest summary cards, side by side on sm+ screens. */}
         {!loading && !error && fastest && slowest && (
-          <div className="mb-6 grid gap-4 sm:grid-cols-2">
+          <div className="mb-4 grid gap-3 sm:mb-6 sm:grid-cols-2 sm:gap-4">
             {[
-              { title: 'Fastest crossing right now', row: fastest, dot: 'bg-green-600' },
-              { title: 'Slowest crossing right now', row: slowest, dot: 'bg-red-600' },
-            ].map(({ title, row, dot }) => (
+              { title: 'Fastest crossing right now', row: fastest },
+              { title: 'Slowest crossing right now', row: slowest },
+            ].map(({ title, row }) => (
               <div key={title} className="card card-pad">
-                <p className="eyebrow flex items-center gap-2">
-                  <span className={`inline-block h-2 w-2 rounded-full ${dot}`} />
-                  {title}
-                </p>
+                <p className="eyebrow">{title}</p>
                 <div className="mt-3 flex items-end justify-between gap-4">
                   <div className="min-w-0">
                     <p className="text-base font-medium text-ink">{row.port_name}</p>
                     <p className="text-xs text-ink-3">
-                      {row.crossing_type} · {row.lane_type}
+                      {row.crossing_type}, {row.lane_type}
                     </p>
                   </div>
                   <p className="shrink-0 font-mono text-3xl text-ink">
@@ -132,16 +129,6 @@ export default function Home() {
             ))}
           </div>
         )}
-
-        {/* LAYOUT/COLORS: wait-level legend — dot colors come from WAIT_TAG in lib/waitTimes.ts. */}
-        <div className="mb-4 flex flex-wrap gap-5 text-sm">
-          {(['light', 'expected', 'heavy'] as WaitLevel[]).map((level) => (
-            <span key={level} className="flex items-center gap-2 text-ink-2">
-              <span className={`inline-block h-2.5 w-2.5 rounded-full ${WAIT_TAG[level].dot}`} />
-              {WAIT_TAG[level].label}
-            </span>
-          ))}
-        </div>
 
         {loading && <p className="text-sm text-ink-3">Loading…</p>}
 

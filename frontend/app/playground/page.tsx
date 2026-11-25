@@ -188,7 +188,7 @@ export default function PlaygroundPage() {
                   <span className="font-sans text-base text-ink-3"> min</span>
                 </p>
                 <p className="mt-2 text-xs text-ink-2">
-                  {f.es_ready_lane ? 'Ready Lane' : 'Standard lane'} · {DAYS[f.dia_semana]} {date} · {hourLabel(f.hour)}
+                  {f.es_ready_lane ? 'Ready Lane' : 'Standard lane'}, {DAYS[f.dia_semana]} {date}, {hourLabel(f.hour)}
                 </p>
               </div>
               <div className="card card-pad">
@@ -222,19 +222,19 @@ export default function PlaygroundPage() {
                 <InputRow
                   label="Holiday"
                   value={f.es_feriado ? 'Yes' : 'No'}
-                  note={holidayNames.length ? holidayNames.join(' · ') : a.holiday_definition}
+                  note={holidayNames.length ? holidayNames.join(', ') : a.holiday_definition}
                 />
                 <InputRow label="School semester active" value={f.semestre_activo ? 'Yes' : 'No'} note="Feb–May and Sep–Nov" />
                 <InputRow
                   label="Weather"
-                  value={`${num(f.hourly_temp_f, 0)}°F · ${f.is_raining ? `${num(f.precip_in, 2)} in rain` : 'no rain'}`}
+                  value={`${num(f.hourly_temp_f, 0)}°F, ${f.is_raining ? `${num(f.precip_in, 2)} in rain` : 'no rain'}`}
                   note={String(c.weather_source ?? '')}
                 />
                 <InputRow label="Daily passenger vehicles" value={num(f.baseline_daily_volume_vehiculos_BOTA, 0)} />
               </dl>
               {otherContext.length > 0 && (
                 <p className="mt-3 text-xs text-ink-3">
-                  Also on this date (context only, not a model input): {otherContext.join(' · ')}
+                  Also on this date (context only, not a model input): {otherContext.join(', ')}
                 </p>
               )}
               {c.calendar_covers_date === false && (
