@@ -76,8 +76,8 @@ create_pg=true
 if az postgres flexible-server show -g "$RG" -n "$PG_SERVER" -o none 2>/dev/null; then
   create_pg=false
   say "Reusing existing Postgres server ${PG_SERVER} (shared with the Power BI warehouse)"
-  if ! az postgres flexible-server db show -g "$RG" -s "$PG_SERVER" -d "$PG_DB" -o none 2>/dev/null; then
-    az postgres flexible-server db create -g "$RG" -s "$PG_SERVER" -d "$PG_DB" -o none
+  if ! az postgres flexible-server db show -g "$RG" -s "$PG_SERVER" -n "$PG_DB" -o none 2>/dev/null; then
+    az postgres flexible-server db create -g "$RG" -s "$PG_SERVER" -n "$PG_DB" -o none
   fi
 else
   say "Creating Postgres server ${PG_SERVER} (B1ms, PostgreSQL 16)"
