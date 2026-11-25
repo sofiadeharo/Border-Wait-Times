@@ -4,34 +4,72 @@
    Design tokens. Every page uses these semantic names (bg-surface, text-ink,
    border-line, text-accent ...) so light/dark switch in one place.
    --------------------------------------------------------------------------- */
+/* FRUTIGER AERO theme: glossy glass panels, sky/aqua gradients, bubbles, gel buttons.
+   Light = "Aero day" (sky + meadow), dark = "Aero night" (deep ocean). */
 :root {
-  --surface: #ffffff;          /* cards, sidebar */
-  --surface-muted: #f6f7f9;    /* inset panels, inputs, table stripes */
-  --line: #e4e7ec;             /* borders, dividers */
-  --ink: #101828;              /* primary text */
-  --ink-2: #475467;            /* secondary text */
-  --ink-3: #667085;            /* muted text, captions */
-  --accent: #184e77;           /* brand navy: buttons, active nav, links */
-  --accent-soft: #e8f0f7;      /* active nav background, chips */
+  --surface: rgba(255, 255, 255, 0.72);       /* cards, sidebar (glass) */
+  --surface-muted: rgba(235, 247, 255, 0.6);  /* inset panels, inputs, table stripes */
+  --line: rgba(120, 180, 225, 0.45);          /* borders, dividers */
+  --ink: #0b2e4f;              /* primary text: deep sky navy */
+  --ink-2: #2a5578;            /* secondary text */
+  --ink-3: #4f7896;            /* muted text, captions */
+  --accent: #0a7fd0;           /* aqua blue: buttons, active nav, links */
+  --accent-soft: #d6f0ff;      /* active nav background, chips */
   --on-accent: #ffffff;
-  --wash: rgba(246, 247, 249, 0.9); /* overlay on the background photo */
 
-  --background: var(--surface-muted);
+  /* Glass + gel recipe */
+  --glass-top: rgba(255, 255, 255, 0.9);
+  --glass-bottom: rgba(226, 244, 255, 0.62);
+  --glass-edge: rgba(255, 255, 255, 0.85);
+  --glass-shadow: rgba(14, 92, 150, 0.18);
+  --gel-1: #8fdcff;
+  --gel-2: #2fa8ee;
+  --gel-3: #0a83d4;
+  --gel-4: #43c0f5;
+  --gel-edge: #0868ad;
+
+  /* Wash over the background photo: bright sky fading into aqua/meadow green */
+  --wash-sky: rgba(110, 196, 255, 0.78);
+  --wash-mid: rgba(196, 236, 255, 0.74);
+  --wash-ground: rgba(160, 228, 186, 0.74);
+  --wash-glare: rgba(255, 255, 255, 0.95);
+  --bubble: rgba(255, 255, 255, 0.85);
+  --bubble-tint: rgba(150, 215, 255, 0.22);
+
+  --background: #bfe6ff;
   --foreground: var(--ink);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: #16191e;
-    --surface-muted: #0f1115;
-    --line: #2a2f37;
-    --ink: #f2f4f7;
-    --ink-2: #c0c6d0;
-    --ink-3: #98a2b3;
-    --accent: #7fb2de;
-    --accent-soft: #1b2a3a;
-    --on-accent: #0f1115;
-    --wash: rgba(15, 17, 21, 0.9);
+    --surface: rgba(10, 38, 64, 0.72);
+    --surface-muted: rgba(8, 30, 52, 0.6);
+    --line: rgba(110, 190, 240, 0.28);
+    --ink: #eaf7ff;
+    --ink-2: #b6dcf5;
+    --ink-3: #86b5d6;
+    --accent: #5cc8ff;
+    --accent-soft: #0e3b5e;
+    --on-accent: #ffffff;
+
+    --glass-top: rgba(40, 100, 150, 0.55);
+    --glass-bottom: rgba(6, 30, 54, 0.7);
+    --glass-edge: rgba(140, 210, 255, 0.35);
+    --glass-shadow: rgba(0, 0, 0, 0.45);
+    --gel-1: #6fd0ff;
+    --gel-2: #1f8fd6;
+    --gel-3: #0a65aa;
+    --gel-4: #2aa6e6;
+    --gel-edge: #054a80;
+
+    --wash-sky: rgba(4, 26, 52, 0.86);
+    --wash-mid: rgba(6, 50, 82, 0.82);
+    --wash-ground: rgba(4, 64, 72, 0.84);
+    --wash-glare: rgba(120, 210, 255, 0.35);
+    --bubble: rgba(170, 225, 255, 0.5);
+    --bubble-tint: rgba(60, 160, 230, 0.15);
+
+    --background: #062038;
   }
 }
 
@@ -47,14 +85,45 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--on-accent);
-  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "Segoe UI", Frutiger, "Frutiger Linotype", "Myriad Pro", "Lucida Grande", "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--surface-muted);
+  background: var(--background);
   color: var(--ink);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Myriad Pro", "Lucida Grande", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Aero backdrop (layout.tsx): sky wash with a sun glare, plus floating bubbles.
+   --------------------------------------------------------------------------- */
+.aero-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 45% at 15% 0%, var(--wash-glare), transparent 70%),
+    radial-gradient(ellipse 90% 30% at 50% 105%, var(--wash-ground), transparent 70%),
+    linear-gradient(180deg, var(--wash-sky) 0%, var(--wash-mid) 55%, var(--wash-ground) 100%);
+}
+
+.aero-bubble {
+  position: absolute;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 32% 28%, var(--bubble) 0 9%, transparent 24%),
+    radial-gradient(circle at 50% 50%, transparent 55%, var(--bubble-tint) 68%, var(--bubble) 72%, transparent 74%),
+    radial-gradient(circle at 50% 60%, var(--bubble-tint), transparent 70%);
+  animation: aero-float 14s ease-in-out infinite;
+}
+
+@keyframes aero-float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-22px) }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aero-bubble { animation: none; }
 }
 
 /* ---------------------------------------------------------------------------
@@ -69,6 +138,7 @@ body {
   }
   .page-title {
     @apply text-2xl font-semibold tracking-tight text-ink sm:text-3xl;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7), 0 0 18px rgba(255, 255, 255, 0.55);
   }
   .page-subtitle {
     @apply mt-1.5 text-sm text-ink-2;
@@ -76,35 +146,87 @@ body {
   .section-title {
     @apply text-lg font-semibold tracking-tight text-ink;
   }
+  /* Glass panel: top-lit gradient, bright rim, blurred backdrop, soft sky shadow. */
   .card {
-    @apply rounded-xl border border-line bg-surface shadow-[0_1px_2px_rgba(16,24,40,0.04)];
+    position: relative;
+    border-radius: 1.25rem;
+    border: 1px solid var(--glass-edge);
+    background: linear-gradient(180deg, var(--glass-top) 0%, var(--glass-bottom) 100%);
+    backdrop-filter: blur(14px) saturate(1.5);
+    -webkit-backdrop-filter: blur(14px) saturate(1.5);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.25),
+      0 10px 28px var(--glass-shadow),
+      0 1px 3px var(--glass-shadow);
   }
   .card-pad {
     @apply p-5;
   }
   .eyebrow {
-    @apply text-xs font-medium uppercase tracking-wider text-ink-3;
+    @apply text-xs font-semibold uppercase tracking-wider text-accent;
   }
   .field-label {
     @apply block text-sm font-medium text-ink;
   }
+  /* Recessed glass input with an aqua glow on focus. */
   .field {
-    @apply mt-1.5 block w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink
-      placeholder:text-ink-3 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20;
+    @apply mt-1.5 block w-full rounded-lg border border-line px-3 py-2 text-sm text-ink placeholder:text-ink-3;
+    background: linear-gradient(180deg, var(--surface-muted), var(--surface));
+    box-shadow: inset 0 1px 3px var(--glass-shadow);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: inset 0 1px 3px var(--glass-shadow), 0 0 0 3px rgba(47, 168, 238, 0.25), 0 0 14px rgba(47, 168, 238, 0.45);
   }
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors
-      disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold
+      transition-[filter,transform] disabled:cursor-not-allowed disabled:opacity-50;
   }
+  .btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  /* Gel button: hard highlight split across the middle, like a glossy pill. */
   .btn-primary {
-    @apply bg-accent text-on-accent hover:opacity-90;
+    color: var(--on-accent);
+    text-shadow: 0 1px 1px rgba(0, 50, 100, 0.45);
+    border: 1px solid var(--gel-edge);
+    background: linear-gradient(180deg, var(--gel-1) 0%, var(--gel-2) 49%, var(--gel-3) 51%, var(--gel-4) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 3px 10px rgba(10, 110, 190, 0.35);
+  }
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(1.08) saturate(1.1);
   }
   .btn-secondary {
-    @apply border border-line bg-surface text-ink hover:bg-surface-muted;
+    color: var(--ink);
+    border: 1px solid var(--glass-edge);
+    background: linear-gradient(180deg, var(--glass-top) 0%, var(--glass-top) 49%, var(--glass-bottom) 51%, var(--glass-top) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px var(--glass-shadow);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    filter: brightness(1.05);
   }
   .chip {
-    @apply rounded-full border border-line bg-surface px-3 py-1.5 text-sm text-ink-2 transition-colors
-      hover:border-accent hover:text-accent;
+    @apply rounded-full px-3 py-1.5 text-sm text-ink-2 transition-colors hover:text-accent;
+    border: 1px solid var(--glass-edge);
+    background: linear-gradient(180deg, var(--glass-top), var(--glass-bottom));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 4px var(--glass-shadow);
+  }
+
+  /* Sidebar (NavTabs.tsx): frosted glass column with gel-highlighted active tab. */
+  .aero-nav {
+    border-right: 1px solid var(--glass-edge);
+    background: linear-gradient(180deg, var(--glass-top) 0%, var(--glass-bottom) 100%);
+    backdrop-filter: blur(16px) saturate(1.5);
+    -webkit-backdrop-filter: blur(16px) saturate(1.5);
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.6), 4px 0 24px var(--glass-shadow);
+  }
+  .aero-tab-active {
+    color: var(--on-accent);
+    text-shadow: 0 1px 1px rgba(0, 50, 100, 0.45);
+    background: linear-gradient(180deg, var(--gel-1) 0%, var(--gel-2) 49%, var(--gel-3) 51%, var(--gel-4) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 2px 8px rgba(10, 110, 190, 0.3);
   }
   .prose-body {
     @apply text-sm leading-relaxed text-ink-2;

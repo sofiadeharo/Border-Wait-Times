@@ -15,7 +15,7 @@ export default function NavTabs() {
   const pathname = usePathname()
 
   return (
-    <nav className="sticky top-0 h-screen w-44 shrink-0 border-r border-line bg-surface/95 px-3 py-6 backdrop-blur">
+    <nav className="aero-nav sticky top-0 h-screen w-44 shrink-0 px-3 py-6">
       <Link href="/" className="mb-8 block px-3">
         <p className="text-sm font-semibold leading-tight text-ink">Border Wait Times</p>
         <p className="text-xs text-ink-3">El Paso · Ciudad Juárez</p>
@@ -30,8 +30,8 @@ export default function NavTabs() {
               href={tab.href}
               aria-current={isActive ? 'page' : undefined}
               className={
-                'rounded-lg px-3 py-2 text-sm font-medium transition-colors ' +
-                (isActive ? 'bg-accent-soft text-accent' : 'text-ink-2 hover:bg-surface-muted hover:text-ink')
+                'rounded-full px-3 py-2 text-sm font-medium transition-colors ' +
+                (isActive ? 'aero-tab-active' : 'text-ink-2 hover:bg-accent-soft hover:text-accent')
               }
             >
               {tab.label}
