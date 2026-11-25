@@ -85,14 +85,16 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--on-accent);
-  --font-sans: "Segoe UI", Frutiger, "Frutiger Linotype", "Myriad Pro", "Lucida Grande", "Helvetica Neue", Arial, sans-serif;
+  /* Segoe UI where installed (Windows); elsewhere Selawik, Microsoft's open-source
+     Segoe UI stand-in, bundled in app/fonts and loaded in layout.tsx. */
+  --font-sans: "Segoe UI", var(--font-selawik), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--ink);
-  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Myriad Pro", "Lucida Grande", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Segoe UI", var(--font-selawik), system-ui, sans-serif;
 }
 
 /* ---------------------------------------------------------------------------
@@ -164,7 +166,7 @@ body {
     @apply p-5;
   }
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-wider text-accent;
+    @apply text-xs font-semibold uppercase tracking-wider text-ink-3;
   }
   .field-label {
     @apply block text-sm font-medium text-ink;

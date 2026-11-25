@@ -1,12 +1,26 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import NavTabs from "./components/NavTabs";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Selawik: Microsoft's open-source (OFL) Segoe UI substitute, used wherever Segoe UI isn't
+// installed (macOS, iOS, Android, Linux). License: app/fonts/Selawik-LICENSE.txt.
+const selawik = localFont({
+  variable: "--font-selawik",
+  display: "swap",
+  src: [
+    { path: "./fonts/selawkl.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/selawk.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/selawksb.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/selawkb.woff2", weight: "700", style: "normal" },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -25,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
+    <html lang="en" className={`${geistMono.variable} ${selawik.variable} h-full antialiased`}>
       <body className="min-h-full flex">
         <div className="fixed inset-0 -z-10">
           <Image

@@ -18,7 +18,7 @@ export default function NavTabs() {
     <nav className="aero-nav sticky top-0 h-screen w-44 shrink-0 px-3 py-6">
       <Link href="/" className="mb-8 block px-3">
         <p className="text-sm font-semibold leading-tight text-ink">Border Wait Times</p>
-        <p className="text-xs text-ink-3">El Paso · Ciudad Juárez</p>
+        <p className="text-xs text-ink-3">El Paso, Ciudad Juárez</p>
       </Link>
       <div className="flex flex-col gap-0.5">
         {TABS.map((tab) => {

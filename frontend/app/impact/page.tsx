@@ -368,7 +368,7 @@ function ChartCard({ title, subtitle, children }: { title: string; subtitle?: st
 function SectionHeading({ step, title, subtitle }: { step: string; title: string; subtitle: string }) {
   return (
     <div className="pt-6">
-      <p className="eyebrow text-accent">{step}</p>
+      <p className="eyebrow">{step}</p>
       <h2 className="mt-1 text-xl font-semibold tracking-tight text-ink">{title}</h2>
       <p className="mt-1 text-sm text-ink-2">{subtitle}</p>
     </div>
@@ -468,7 +468,7 @@ export default function ImpactPage() {
   const flowValue = a
     ? Object.entries(a.throughput_veh_per_lane_hour)
         .map(([lane, mu]) => `${mu} (${lane})`)
-        .join(' · ')
+        .join(', ')
     : ''
   const lanesNote = a
     ? `Open lanes: ${
@@ -488,7 +488,7 @@ export default function ImpactPage() {
           <h1 className="page-title">Annual Cost of Delay</h1>
           <p className="page-subtitle">
             What passenger-vehicle delays at the Bridge of the Americas (BOTA) cost over a year
-            {data ? ` · ${data.year}` : ''}.
+            {data ? ` in ${data.year}` : ''}.
           </p>
         </header>
 
@@ -499,7 +499,7 @@ export default function ImpactPage() {
           <div className="viz-root space-y-4">
             {/* ----- 1. lost productivity ----- */}
             <SectionHeading
-              step="1 · Lost productivity"
+              step="1 Lost productivity"
               title="Time lost in line, translated to money"
               subtitle={`Every person-hour spent waiting past ${a.delay_threshold_minutes} min, valued at $${a.value_of_time_usd_per_hour}/hour.`}
             />
